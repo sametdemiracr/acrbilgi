@@ -81,6 +81,7 @@ const P = [
   ["ACR Portal: aylık satış özeti, haftalık satış grafiği ve onay bekleyen talepler", 'ACR Portal: monthly sales overview, weekly sales chart and requests awaiting approval'],
   ['Satış özeti', 'Sales overview'], ['Kasım 2026', 'November 2026'], ['Aylık satış', 'Monthly sales'], ['Açık sipariş', 'Open orders'], ['Vadesi geçen', 'Overdue'], ['14 yeni', '14 new'], ['9 cari', '9 accounts'], ['Haftalık satış', 'Weekly sales'], ['Onay bekleyenler', 'Awaiting approval'], ['Tedarik talebi', 'Supply request'], ['Bayi iskontosu', 'Dealer discount'], ['Bekliyor', 'Waiting'], ['Avans talebi', 'Advance request'], ['%8', '8%'],
   ['Bağlı uygulamalar', 'Connected apps'], ['3 bağlı', '3 connected'], ['Raporları tablo olarak alır', 'Takes reports as tables'], ['Panoları besler', 'Feeds dashboards'], ['Onayları kanala düşürür', 'Posts approvals to a channel'], ['Girişi şirket hesabıyla yapar', 'Signs in with the company account'], ['Bağlı', 'Connected'], ['Bağla', 'Connect'],
+  ['Aklınızdaki soru burada yoksa bize yazın.', 'If your question is not here, write to us.'], ['Hemen konuşalım', "Let's talk"], ["Sorunuz için bizi arayın ya da WhatsApp'tan yazın.", 'Call us or message us on WhatsApp.'], ['Bizi arayın', 'Call us'], ["WhatsApp'tan yazın", 'Message us on WhatsApp'],
   ['İçeriğe geç', 'Skip to content'],
 ];
 export const HOME_EN = P.sort((a, b) => b[0].length - a[0].length);

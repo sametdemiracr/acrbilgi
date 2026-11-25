@@ -55,6 +55,17 @@
     "trademark": false
   },
   {
+    "file": "ui-calendar-clock.svg",
+    "icon": "ui:calendar-clock",
+    "name": "Calendar Clock",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
     "file": "ui-chart-column.svg",
     "icon": "ui:chart-column",
     "name": "Chart Column",
@@ -80,6 +91,17 @@
     "file": "ui-circle-check.svg",
     "icon": "ui:circle-check",
     "name": "Circle Check",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
+    "file": "ui-circle-question-mark.svg",
+    "icon": "ui:circle-question-mark",
+    "name": "Circle Help",
     "kind": "line",
     "source": "@iconify-json/lucide@1.2.100",
     "author": "Lucide Contributors",

@@ -230,6 +230,7 @@ function crumbLd(c, label) {
 function faqLd(faq) {
   return { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 }
+const talkTile = (c) => { const t = UI[c.lang]; return `<div class="tile tile--dark talk"><span class="tile__ico tile__ico--sm">${ico('headset')}</span><div><h3 class="t-lead">${esc(t.talkH)}</h3><p>${esc(t.talkP)}</p></div><div class="talk__links"><a class="link" href="tel:${PHONE}">${esc(t.callUs)}</a><a class="link" href="https://wa.me/905309694010">${esc(t.waUs)}</a></div></div>`; };
 const facts = (arr) => `<dl class="hero__facts">${arr.map(([a, b]) => `<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join('')}</dl>`;
 const crumbHtml = (c, label) => `<nav class="crumbs" aria-label="Breadcrumb"><a href="${c.href(c.lang, 'home')}">${esc(UI[c.lang].crumbHome)}</a><span aria-hidden="true">/</span><span>${esc(label)}</span></nav>`;
 
@@ -306,6 +307,7 @@ ${frag.html}
       <div class="span-6">
         <div class="section-head"><h2 id="sorular-h">${esc(t.faq)}</h2></div>
         <div class="page-links"><span class="t-label muted">${esc(t.related)}</span>${related}</div>
+        ${talkTile(c)}
       </div>
       <div class="span-6 start-7">
         <div class="faq">
@@ -366,10 +368,10 @@ ${statementHero(c, { h1: k.h1, lead: k.lead, crumb: lang === 'tr' ? 'İletişim'
       </div>
       <div class="span-6 start-7">
         <div class="tile-grid tile-grid--2">
-          <article class="tile tile--dots">${chip('phone')}<h3 class="t-lead">${esc(t.phone)}</h3><p><a class="link" href="tel:${PHONE}">+90 530 969 40 10</a></p></article>
-          <article class="tile tile--mist">${chip('message-circle')}<h3 class="t-lead">${esc(t.whatsapp)}</h3><p><a class="link" href="https://wa.me/905309694010">${esc(k.wa)}</a></p></article>
-          <article class="tile tile--mist">${chip('mail')}<h3 class="t-lead">${esc(t.email)}</h3><p><a class="link" href="mailto:info@acrbilgi.com">info@acrbilgi.com</a></p></article>
-          <article class="tile tile--dots">${chip('map-pin')}<h3 class="t-lead">${esc(t.address)}</h3><p class="muted">Rüzgarlıbahçe Mah. Cumhuriyet Cd. No: 10/32, 34805 Beykoz / ${lang === 'tr' ? 'İstanbul' : 'Istanbul'}</p><p><a class="link" href="https://www.openstreetmap.org/search?query=${encodeURIComponent(k.mapQuery)}">${esc(k.addrNote)}</a></p></article>
+          <article class="tile tile--black">${chip('phone')}<h3 class="t-lead">${esc(t.phone)}</h3><p><a class="link" href="tel:${PHONE}">+90 530 969 40 10</a></p></article>
+          <article class="tile tile--green">${chip('message-circle')}<h3 class="t-lead">${esc(t.whatsapp)}</h3><p><a class="link" href="https://wa.me/905309694010">${esc(k.wa)}</a></p></article>
+          <article class="tile tile--blue">${chip('mail')}<h3 class="t-lead">${esc(t.email)}</h3><p><a class="link" href="mailto:info@acrbilgi.com">info@acrbilgi.com</a></p></article>
+          <article class="tile tile--brown">${chip('map-pin')}<h3 class="t-lead">${esc(t.address)}</h3><p class="muted">Rüzgarlıbahçe Mah. Cumhuriyet Cd. No: 10/32, 34805 Beykoz / ${lang === 'tr' ? 'İstanbul' : 'Istanbul'}</p><p><a class="link" href="https://www.openstreetmap.org/search?query=${encodeURIComponent(k.mapQuery)}">${esc(k.addrNote)}</a></p></article>
         </div>
         <h3 class="t-lead" style="margin-top:var(--s-7)">${esc(k.hoursH)}</h3>
         <dl class="hours" data-tz="Europe/Istanbul"><dt data-days="mon-fri">${esc(k.hours[0][0])}</dt><dd>${esc(k.hours[0][1])}</dd><dt data-days="sat,sun">${esc(k.hours[1][0])}</dt><dd>${esc(k.hours[1][1])}</dd></dl>
