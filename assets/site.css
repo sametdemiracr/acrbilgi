@@ -94,3 +94,68 @@ a.tile:hover, .tile:hover { transform: translateY(-2px); box-shadow: 0 16px 34px
 .nav__menu .tile::before, .nav__menu .tile::after { z-index: 0; }
 .nav__menu .tile > * { position: relative; z-index: 1; }
 @media (max-width: 1023px) { .menu-tiles { grid-template-columns: 1fr; } .menu-cta { display: none; } }
+
+/* ---- variation: a bento of different tiles, a connected step flow, a lighter hero ---- */
+.bento { display: grid; gap: var(--s-4); grid-template-columns: 1fr; }
+@media (min-width: 640px) { .bento { grid-template-columns: repeat(2, 1fr); } .bento > .b1 { grid-column: 1 / -1; } }
+@media (min-width: 1024px) {
+  .bento { grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, minmax(200px, auto)); }
+  .bento > .b1 { grid-column: 1 / 3; grid-row: 1 / 3; }
+  .bento > .b4 { grid-column: 3 / 5; }
+}
+.tile--feature { background: linear-gradient(150deg, #0a6bc0 0%, #0a5fae 52%, #0b4a8c 100%); border-color: transparent; color: #fff; align-content: end; padding: var(--s-7); }
+.tile--feature h3 { font: 500 var(--t-h3)/1.15 var(--font-display); letter-spacing: -0.02em; }
+.tile--feature p { color: rgb(255 255 255 / .84); max-width: 34ch; }
+.tile--feature::before { width: 320px; height: 320px; right: -90px; top: -110px; background: radial-gradient(circle at 30% 30%, rgb(255 255 255 / .16), rgb(255 255 255 / .04) 60%, transparent 70%); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .12); }
+.tile--feature::after { width: 150px; height: 150px; right: 70px; top: 90px; background: none; box-shadow: inset 0 0 0 1px rgb(255 255 255 / .12); }
+.tile--feature .tile__ico { background: #fff; color: #0a6bc0; box-shadow: 0 10px 24px -10px rgb(0 0 0 / .45); position: absolute; top: var(--s-7); left: var(--s-7); }
+.tile--feature .tile__mark { position: absolute; right: var(--s-6); bottom: var(--s-5); width: 150px; height: 150px; color: #fff; opacity: .1; z-index: -1; }
+.tile--feature .tile__mark svg { width: 100%; height: 100%; stroke-width: 1.2; }
+.tile--dots { background: #fff; }
+.tile--dots::before { inset: 0; width: auto; height: auto; border-radius: 0; box-shadow: none; right: 0; top: 0;
+  background: radial-gradient(circle, rgb(10 107 192 / .22) 1.1px, transparent 1.6px) 0 0 / 18px 18px; -webkit-mask-image: linear-gradient(200deg, #000 0, transparent 55%); mask-image: linear-gradient(200deg, #000 0, transparent 55%); }
+.tile--dots::after { display: none; }
+.tile--mist { background: linear-gradient(180deg, #eef4fb 0%, #dbe8f6 100%); }
+.tile--mist::before { inset: 0; width: auto; height: auto; border-radius: 0; box-shadow: none; right: 0; top: 0;
+  background: repeating-radial-gradient(circle at 100% 100%, transparent 0 22px, rgb(10 107 192 / .09) 22px 23px); -webkit-mask-image: radial-gradient(circle at 100% 100%, #000, transparent 70%); mask-image: radial-gradient(circle at 100% 100%, #000, transparent 70%); }
+.tile--mist::after { display: none; }
+.tile--wide { grid-template-columns: auto 1fr; column-gap: var(--s-5); align-items: center; background: linear-gradient(100deg, #fff 0%, #e6f0fb 100%); }
+.tile--wide .tile__ico { grid-row: 1 / span 2; }
+.tile--wide::before { width: 240px; height: 240px; right: -70px; top: -90px; }
+/* steps: nodes on a dashed line, no boxes */
+.flow { position: relative; display: grid; gap: var(--s-7); grid-template-columns: 1fr; }
+.flow__step { position: relative; display: grid; gap: var(--s-3); align-content: start; }
+.flow__node { position: relative; z-index: 1; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; color: var(--accent); background: #fff;
+  box-shadow: 0 0 0 2px var(--accent), 0 0 0 8px rgb(10 107 192 / .08); }
+.flow__node svg { width: 24px; height: 24px; }
+.flow__num { position: absolute; z-index: 2; left: 38px; top: -6px; font: 500 12px/1 var(--font-mono); color: #fff; background: var(--accent); padding: 4px 7px; border-radius: 99px; }
+.flow__step h3, .flow__step p { margin: 0; }
+@media (min-width: 1024px) {
+  .flow { grid-template-columns: repeat(3, 1fr); gap: var(--s-8); }
+  .flow::before { content: ""; position: absolute; left: 26px; right: 10%; top: 26px; border-top: 2px dashed rgb(10 107 192 / .28); }
+}
+@media (max-width: 1023px) {
+  .flow::before { content: ""; position: absolute; left: 25px; top: 26px; bottom: 26px; border-left: 2px dashed rgb(10 107 192 / .28); }
+  .flow__step { padding-left: 76px; }
+  .flow__node { position: absolute; left: 0; top: 0; }
+  .flow__num { left: 38px; }
+}
+/* lighter hero art and a softer left side */
+.hero__art { background:
+    radial-gradient(circle at 14% 92%, rgb(10 107 192 / .13) 0 120px, transparent 121px),
+    radial-gradient(circle at 92% 10%, rgb(255 255 255 / .85) 0 150px, transparent 151px),
+    radial-gradient(circle, rgb(10 107 192 / .15) 1.1px, transparent 1.6px) 0 0 / 22px 22px,
+    linear-gradient(150deg, #f6faff 0%, #e3effc 55%, #cfe3f8 100%) !important;
+  box-shadow: inset 0 0 0 1px rgb(10 107 192 / .10); }
+.hero--collage { position: relative; isolation: isolate; }
+.hero--collage::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(circle at 5% 34%, rgb(10 107 192 / .07) 0 150px, transparent 151px),
+    radial-gradient(circle at 40% 92%, rgb(10 107 192 / .05) 0 80px, transparent 81px),
+    radial-gradient(circle, rgb(10 107 192 / .16) 1.1px, transparent 1.6px) 0 0 / 24px 24px;
+  -webkit-mask-image: linear-gradient(90deg, #000 0, #000 30%, transparent 58%); mask-image: linear-gradient(90deg, #000 0, #000 30%, transparent 58%); }
+.chips { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-5); }
+.chip { display: inline-flex; align-items: center; gap: var(--s-2); padding: 6px 12px 6px 8px; border-radius: 99px; font-size: var(--t-small); color: var(--ink);
+  background: linear-gradient(160deg, #fff, #eaf2fb); box-shadow: inset 0 0 0 1px rgb(10 107 192 / .14); }
+.chip svg { width: 18px; height: 18px; color: var(--accent); flex: none; }
+.chip b { font-weight: 500; }

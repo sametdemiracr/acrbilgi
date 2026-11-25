@@ -259,8 +259,10 @@ function servicePage(lang, p) {
     { '@type': 'Service', '@id': c.url(lang, p.id) + '#service', name: p.title[lang], description: p.desc[lang], provider: orgRef, areaServed: [{ '@type': 'City', name: lang === 'tr' ? 'İstanbul' : 'Istanbul' }, { '@type': 'Country', name: lang === 'tr' ? 'Türkiye' : 'Turkey' }], inLanguage: lang === 'tr' ? 'tr-TR' : 'en-US', url: c.url(lang, p.id) },
     crumbLd(c, label), faqLd(p.faq[lang]),
   ];
-  const what4 = p.what[lang].map(([n, d], i) => `<div class="span-3"><article class="tile">${chip(ICONS[p.id][i])}<h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(d)}</p></article></div>`).join('\n        ');
-  const steps3 = p.steps[lang].map(([n, d], i) => `<div class="span-4"><article class="tile"><div class="tile__head">${chip(STEP_ICONS[i])}<span class="tile__num">0${i + 1}</span></div><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(d)}</p></article></div>`).join('\n        ');
+  const VAR = ['tile--feature', 'tile--dots', 'tile--mist', 'tile--wide'];
+  const what4 = p.what[lang].map(([n, d], i) => `<article class="tile ${VAR[i]} b${i + 1}">${chip(ICONS[p.id][i])}${i === 0 ? `<span class="tile__mark" aria-hidden="true">${ico(ICONS[p.id][0])}</span>` : ''}<h3 class="t-lead">${esc(n)}</h3><p class="${i === 0 ? '' : 'muted'}">${esc(d)}</p></article>`).join('\n        ');
+  const steps3 = p.steps[lang].map(([n, d], i) => `<div class="flow__step"><span class="flow__node">${ico(STEP_ICONS[i])}</span><span class="flow__num">0${i + 1}</span><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(d)}</p></div>`).join('\n        ');
+  const chips = p.facts[lang].slice(0, 4).map(([a, b]) => `<span class="chip">${ico('circle-check')}<span>${esc(a)}: <b>${esc(b)}</b></span></span>`).join('');
   const proof = p.facts[lang].slice(0, 3).map(([a, b]) => `${a}: ${b}`).join(' · ');
   const html = `${head(c, { title: `${p.title[lang]} | ACR Bilgi`, desc: p.desc[lang], ld, frags: frag.css, extraCss: '.hero__art > .ly-piece--main.frag { left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(var(--w), calc(100% - 48px)); } .steps3 { margin-top: var(--s-9, 96px); } @media (max-width: 639px) { .hero__art > .ly-piece--main.frag { top: var(--s-5); transform: translateX(-50%); } }' })}
 <body>
@@ -274,7 +276,7 @@ ${navHtml(c)}
         <h1 id="hero-h">${esc(p.h1[lang])}</h1>
         <p class="hero__lead">${esc(p.lead[lang])}</p>
         <div class="btn-row"><a class="btn btn--primary" href="${c.href(lang, 'contact', '#gorusme')}">${esc(t.cta)}</a><a class="btn btn--secondary" href="${c.href(lang, 'home', '#altyapi')}">${esc(t.seeServices)}</a></div>
-        <p class="hero__proof">${esc(proof)}</p>
+        <div class="chips">${chips}</div>
       </div>
       <div class="hero__art span-6 start-7">
         <div class="ly-piece ly-piece--main frag" style="--w:${frag.w}px" data-ui-loop>
@@ -287,11 +289,11 @@ ${frag.html}
   <section class="section sec-bubbles" id="neler" aria-labelledby="neler-h">
     <div class="wrap">
       <div class="section-head"><h2 id="neler-h">${esc(t.what)}</h2></div>
-      <div class="grid">
+      <div class="bento">
         ${what4}
       </div>
       <h2 class="t-h3 steps3" style="font-size:var(--t-h3)">${esc(t.how)}</h2>
-      <div class="grid" style="margin-top:var(--s-5)">
+      <div class="flow" style="margin-top:var(--s-6)">
         ${steps3}
       </div>
     </div>
@@ -362,10 +364,10 @@ ${statementHero(c, { h1: k.h1, lead: k.lead, crumb: lang === 'tr' ? 'İletişim'
       </div>
       <div class="span-6 start-7">
         <div class="tile-grid tile-grid--2">
-          <article class="tile">${chip('phone')}<h3 class="t-lead">${esc(t.phone)}</h3><p><a class="link" href="tel:${PHONE}">+90 530 969 40 10</a></p></article>
-          <article class="tile">${chip('message-circle')}<h3 class="t-lead">${esc(t.whatsapp)}</h3><p><a class="link" href="https://wa.me/905309694010">${esc(k.wa)}</a></p></article>
-          <article class="tile">${chip('mail')}<h3 class="t-lead">${esc(t.email)}</h3><p><a class="link" href="mailto:info@acrbilgi.com">info@acrbilgi.com</a></p></article>
-          <article class="tile">${chip('map-pin')}<h3 class="t-lead">${esc(t.address)}</h3><p class="muted">Rüzgarlıbahçe Mah. Cumhuriyet Cd. No: 10/32, 34805 Beykoz / ${lang === 'tr' ? 'İstanbul' : 'Istanbul'}</p><p><a class="link" href="https://www.openstreetmap.org/search?query=${encodeURIComponent(k.mapQuery)}">${esc(k.addrNote)}</a></p></article>
+          <article class="tile tile--dots">${chip('phone')}<h3 class="t-lead">${esc(t.phone)}</h3><p><a class="link" href="tel:${PHONE}">+90 530 969 40 10</a></p></article>
+          <article class="tile tile--mist">${chip('message-circle')}<h3 class="t-lead">${esc(t.whatsapp)}</h3><p><a class="link" href="https://wa.me/905309694010">${esc(k.wa)}</a></p></article>
+          <article class="tile tile--mist">${chip('mail')}<h3 class="t-lead">${esc(t.email)}</h3><p><a class="link" href="mailto:info@acrbilgi.com">info@acrbilgi.com</a></p></article>
+          <article class="tile tile--dots">${chip('map-pin')}<h3 class="t-lead">${esc(t.address)}</h3><p class="muted">Rüzgarlıbahçe Mah. Cumhuriyet Cd. No: 10/32, 34805 Beykoz / ${lang === 'tr' ? 'İstanbul' : 'Istanbul'}</p><p><a class="link" href="https://www.openstreetmap.org/search?query=${encodeURIComponent(k.mapQuery)}">${esc(k.addrNote)}</a></p></article>
         </div>
         <h3 class="t-lead" style="margin-top:var(--s-7)">${esc(k.hoursH)}</h3>
         <dl class="hours" data-tz="Europe/Istanbul"><dt data-days="mon-fri">${esc(k.hours[0][0])}</dt><dd>${esc(k.hours[0][1])}</dd><dt data-days="sat,sun">${esc(k.hours[1][0])}</dt><dd>${esc(k.hours[1][1])}</dd></dl>
@@ -400,14 +402,14 @@ ${statementHero(c, { h1: a.h1, lead: a.lead, factsArr: a.figs.map(([n, d]) => [d
   <section class="section" aria-labelledby="what-h">
     <div class="wrap grid grid--top">
       <div class="span-6"><div class="section-head"><h2 id="what-h">${esc(a.whatH)}</h2><p>${esc(a.what)}</p></div></div>
-      <div class="span-6 start-7"><div class="tile-grid">${a.rules.map(([n, d], i) => `<article class="tile" style="grid-template-columns:auto 1fr;column-gap:var(--s-4)">${chip(['file-text', 'circle-check', 'lock-open'][i], true)}<div><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(d)}</p></div></article>`).join('')}</div></div>
+      <div class="span-6 start-7"><div class="tile-grid">${a.rules.map(([n, d], i) => `<article class="tile ${['tile--dots', 'tile--mist', 'tile--wide'][i]}" style="grid-template-columns:auto 1fr;column-gap:var(--s-4)">${chip(['file-text', 'circle-check', 'lock-open'][i], true)}<div><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(d)}</p></div></article>`).join('')}</div></div>
     </div>
   </section>
 
   <section class="section ground-surface sec-bubbles" aria-labelledby="team-h">
     <div class="wrap">
       <div class="section-head"><h2 id="team-h">${esc(a.teamH)}</h2><p>${esc(a.teamP)}</p></div>
-      <div class="tile-grid tile-grid--4">${a.team.map(([n, r]) => `<article class="tile">${chip('user')}<div><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(r)}</p></div></article>`).join('')}</div>
+      <div class="tile-grid tile-grid--4">${a.team.map(([n, r]) => `<article class="tile tile--dots">${chip('user')}<div><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(r)}</p></div></article>`).join('')}</div>
     </div>
   </section>
 
