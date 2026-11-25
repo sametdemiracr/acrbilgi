@@ -1,0 +1,36 @@
+# ACR Bilgi: Apache / LiteSpeed rules (Hostinger)
+Options -Indexes
+DirectoryIndex index.html index.php
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+# https and the www host (the canonical address of every page)
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.acrbilgi.com%{REQUEST_URI} [L,R=301]
+# old addresses that have a new home
+RewriteRule ^hizmetler/?$ /ozel-yazilim-gelistirme/ [R=301,L]
+RewriteRule ^sunucu-ve-lisans/?$ /kurumsal-donanim-sunucu/ [R=301,L]
+RewriteRule ^teklif-al/?$ /iletisim/ [R=301,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+<FilesMatch "\.(css|js|svg|webp|png|jpg|jpeg|woff2)$">
+Header set Cache-Control "public, max-age=2592000"
+</FilesMatch>
+<FilesMatch "\.html$">
+Header set Cache-Control "public, max-age=300"
+</FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript image/svg+xml application/json application/xml
+</IfModule>
+
+AddType image/webp .webp
+AddType text/javascript .js .mjs

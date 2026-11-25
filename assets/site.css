@@ -270,3 +270,4 @@ html[data-ground="sky"] { --ground-bg: #dbe9f8; --ground-surface: #eef5fd; --gro
 .stat-card .tile__ico { align-self: center; flex: none; }
 .stat-card { align-items: center; }
 .chips a.chip { text-decoration: none; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }

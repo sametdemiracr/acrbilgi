@@ -360,7 +360,8 @@ ${navHtml(c)}
     <div class="wrap grid grid--top">
       <div class="span-6">
         <div class="section-head"><h2 id="gorusme-h">${esc(k.formH)}</h2><p>${esc(k.formP)}</p></div>
-        <form class="form" action="mailto:info@acrbilgi.com" method="post" enctype="text/plain" data-endpoint="" data-sent="${esc(k.sent)}" novalidate>
+        <form class="form" action="mailto:info@acrbilgi.com" method="post" enctype="text/plain" data-endpoint="/form.php" data-sent="${esc(k.sent)}" novalidate>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="field"><label for="f-name">${esc(lb.name)}</label>
             <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
             <p class="field__error" id="f-name-err" hidden>${esc(er.name)}</p></div>
@@ -407,7 +408,7 @@ function aboutPage(lang) {
   const label = lang === 'tr' ? 'Hakkımızda' : 'About';
   const ld = [
     { '@type': 'AboutPage', '@id': c.url(lang, 'about') + '#page', url: c.url(lang, 'about'), name: a.title, inLanguage: lang === 'tr' ? 'tr-TR' : 'en-US', about: orgRef },
-    { '@type': 'Organization', '@id': ORIGIN + '/#organization', name: 'ACR Bilgi Sistemleri', url: ORIGIN + '/', foundingDate: '2005', employee: a.team.map(([n, r]) => ({ '@type': 'Person', name: n, jobTitle: r })) },
+    { '@type': 'Organization', '@id': ORIGIN + '/#organization', name: 'ACR Bilgi Sistemleri', url: ORIGIN + '/', foundingDate: '2025', employee: a.team.map(([n, r]) => ({ '@type': 'Person', name: n, jobTitle: r })) },
     crumbLd(c, label),
   ];
   const AREA_ICONS = ['award', 'workflow', 'server', 'megaphone'];
@@ -578,6 +579,33 @@ function homePages() {
   write('en/index.html', en);
 }
 
+function notFoundPage() {
+  const base = makeCtx('tr', 'home');
+  const c = { ...base, r: '404.html', up: '/', asset: (p) => '/assets/' + p, href: (toLang, toId, hash = '') => '/' + rel(toLang, toId) + hash, url: base.url };
+  c.id = 'home';
+  let h = head(c, { title: 'Sayfa bulunamadı | ACR Bilgi', desc: 'Aradığınız sayfa bulunamadı.', noindex: true });
+  h = h.replace(/<link rel="canonical"[^>]*>\n/, '').replace(/<link rel="alternate"[^>]*>\n/g, '').replace('<link rel="icon" href="/favicon.svg"', '<link rel="icon" href="/favicon.svg"');
+  const html = `${h}
+<body>
+${navHtml(c)}
+
+<main id="top">
+  <section class="hero hero--statement hero--compact bg-mist" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text hero__in"><div>
+      <p class="t-label muted">404</p>
+      <h1 id="hero-h">Sayfa bulunamadı</h1>
+      <p class="hero__lead">Aradığınız sayfa taşınmış ya da hiç var olmamış olabilir. Ana sayfadan devam edebilir veya bize yazabilirsiniz.</p>
+      <div class="btn-row"><a class="btn btn--primary" href="/">Ana sayfaya dönün</a><a class="btn btn--secondary" href="/iletisim/">İletişim</a></div>
+    </div></div></div>
+  </section>
+</main>
+
+${footerHtml(c, { closeCta: false }).replace('aria-labelledby="close-h"', 'aria-label="ACR Bilgi"')}
+
+${SCRIPTS(c)}`;
+  write('404.html', html);
+}
+notFoundPage();
 function write(file, data) { fs.mkdirSync(path.dirname(file) || '.', { recursive: true }); fs.writeFileSync(file, data); }
 
 for (const lang of ['tr', 'en']) {
