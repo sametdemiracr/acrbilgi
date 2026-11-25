@@ -182,3 +182,39 @@ html[data-ground="sky"] { --ground-bg: #dbe9f8; --ground-surface: #eef5fd; --gro
 .chip--sec { justify-self: start; font-weight: 500; }
 @media (max-width: 1023px) { .stat-card:nth-child(n) { transform: none; } .ab-stats { padding: var(--s-5); } }
 @media (min-width: 1024px) { .res-grid > :nth-child(5) { grid-column: span 2; } }
+
+/* hero portal window (home) */
+.d-side > span svg { width: 16px; height: 16px; flex: none; opacity: .75; }
+.d-side > span.is-on { background: rgb(10 107 192 / .10); color: #0a5aa6; }
+.d-side > span.is-on svg { opacity: 1; }
+.pw-pill { display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 99px; font-size: 13px; color: #3d4752; box-shadow: inset 0 0 0 1px rgb(0 0 0 / .1); }
+.pw-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.pw-kpi { display: grid; gap: 4px; padding: 12px; border-radius: 12px; background: linear-gradient(160deg, #fff, #f1f6fc); box-shadow: inset 0 0 0 1px rgb(10 107 192 / .12); }
+.pw-kpi small { font-size: 12px; color: #5d6772; }
+.pw-kpi b { font: 600 20px/1.1 var(--font-text); letter-spacing: -0.01em; color: #0b1220; }
+.pw-kpi .d-chip { justify-self: start; height: 20px; font-size: 12px; }
+.pw-chip--blue { background: rgb(10 107 192 / .1); color: #0a5aa6; }
+.pw-chart, .pw-list { display: grid; gap: 6px; }
+.pw-chart small, .pw-list small { font-size: 12px; color: #5d6772; }
+.pw-bars { width: 100%; height: 64px; }
+.pw-bars rect { fill: rgb(10 107 192 / .22); }
+.pw-bars rect.is-hi { fill: #0a6bc0; }
+.pw-row { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto auto; gap: 10px; align-items: center; padding: 7px 0; border-top: 1px solid rgb(0 0 0 / .07); font-size: 13px; }
+.pw-row b { display: block; font-weight: 500; color: #0b1220; }
+.pw-row small { font-size: 12px; color: #6b747d; }
+.pw-row .num { font-variant-numeric: tabular-nums; color: #0b1220; }
+.pw-av { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 600; color: #0a5aa6; background: rgb(10 107 192 / .12); }
+.ly-piece--main .d-main { gap: 10px; }
+@media (max-width: 639px) { .pw-row { grid-template-columns: 30px minmax(0, 1fr) auto; } .pw-row .num { display: none; } }
+
+/* ---- phone: a dark band at the foot with call, WhatsApp and the form ---- */
+.ly-piece--main .d-win__body { min-height: 620px; }
+@media (max-width: 639px) {
+  .actionbar--call { background: #0b1220; border-top: 1px solid rgb(255 255 255 / .08); grid-template-columns: auto auto minmax(0, 1fr); gap: var(--s-1); padding-inline: var(--s-3); }
+  .ab-item { display: flex; align-items: center; justify-content: center; gap: 7px; height: 48px; padding: 0 12px; border-radius: var(--r-btn); color: #fff; text-decoration: none; font: 500 14px/1 var(--font-text); white-space: nowrap; min-width: 0; }
+  .ab-item svg { width: 19px; height: 19px; flex: none; }
+  .ab-item:active { background: rgb(255 255 255 / .12); }
+  .actionbar--call .btn--primary { font-size: 14px; padding-inline: var(--s-3); }
+  .pw-list, .pw-chart { display: none; }
+}
+

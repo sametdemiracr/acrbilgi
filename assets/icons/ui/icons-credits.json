@@ -22,6 +22,17 @@
     "trademark": false
   },
   {
+    "file": "ui-bell.svg",
+    "icon": "ui:bell",
+    "name": "Bell",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
     "file": "ui-boxes.svg",
     "icon": "ui:boxes",
     "name": "Boxes",
@@ -55,6 +66,17 @@
     "trademark": false
   },
   {
+    "file": "ui-circle-alert.svg",
+    "icon": "ui:circle-alert",
+    "name": "Circle Alert",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
     "file": "ui-circle-check.svg",
     "icon": "ui:circle-check",
     "name": "Circle Check",
@@ -69,6 +91,17 @@
     "file": "ui-clipboard-list.svg",
     "icon": "ui:clipboard-list",
     "name": "Clipboard List",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
+    "file": "ui-database.svg",
+    "icon": "ui:database",
+    "name": "Database",
     "kind": "line",
     "source": "@iconify-json/lucide@1.2.100",
     "author": "Lucide Contributors",

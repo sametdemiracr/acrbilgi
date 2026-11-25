@@ -78,6 +78,9 @@ const P = [
   ['Devreye alır, destek veririz', 'We go live and support you'], ['Ekibinize kullanımı gösterir, canlıya aldıktan sonra da yanınızda kalırız.', 'We show your team how to use it and stay with you after launch.'],
   ['Portal canlıya alındı', 'Portal went live'], ['Ekibinizin girişleri açıldı', 'Your team\'s logins are open'], ['Destek talebi alındı', 'Support request received'], ['2 sa', '2 h'], ['Yeni bir rapor kırılımı isteniyor', 'A new report breakdown is requested'], ['Talep tamamlandı', 'Request completed'], ['1 gün', '1 day'], ['Rapor portala eklendi', 'The report was added to the portal'],
   ['Sık sorulan sorular', 'Questions'], ['yıllık saha deneyimi', 'years in the field'], ['son kullanıcı', 'end users'], ['sektörde proje', 'sectors with projects'],
+  ["ACR Portal: aylık satış özeti, haftalık satış grafiği ve onay bekleyen talepler", 'ACR Portal: monthly sales overview, weekly sales chart and requests awaiting approval'],
+  ['Satış özeti', 'Sales overview'], ['Kasım 2026', 'November 2026'], ['Aylık satış', 'Monthly sales'], ['Açık sipariş', 'Open orders'], ['Vadesi geçen', 'Overdue'], ['14 yeni', '14 new'], ['9 cari', '9 accounts'], ['Haftalık satış', 'Weekly sales'], ['Onay bekleyenler', 'Awaiting approval'], ['Tedarik talebi', 'Supply request'], ['Bayi iskontosu', 'Dealer discount'], ['Bekliyor', 'Waiting'], ['Avans talebi', 'Advance request'], ['%8', '8%'],
+  ['Bağlı uygulamalar', 'Connected apps'], ['3 bağlı', '3 connected'], ['Raporları tablo olarak alır', 'Takes reports as tables'], ['Panoları besler', 'Feeds dashboards'], ['Onayları kanala düşürür', 'Posts approvals to a channel'], ['Girişi şirket hesabıyla yapar', 'Signs in with the company account'], ['Bağlı', 'Connected'], ['Bağla', 'Connect'],
   ['İçeriğe geç', 'Skip to content'],
 ];
 export const HOME_EN = P.sort((a, b) => b[0].length - a[0].length);

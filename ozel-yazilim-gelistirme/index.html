@@ -23,7 +23,7 @@
 <meta name="page-type" content="software">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400..700&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/system.css">
 <link rel="stylesheet" href="../assets/ui/cards.css">
 <link rel="stylesheet" href="../assets/motion/motion.css">
@@ -36,12 +36,12 @@
   --p-accent: #0a6bc0; --p-accent-ink: #ffffff; --p-action: #0a6bc0; --p-action-ink: #ffffff;
   --p-inv-bg: #0b1220; --p-inv-surface: #181f2d; --p-inv-ink: #ffffff; --p-inv-muted: #979ba3;
   --p-inv-accent: #ffffff; --p-inv-accent-ink: #0b1220; --p-inv-action: #ffffff; --p-inv-action-ink: #0b1220;
-  --font-display: "Geist", system-ui, sans-serif;
-  --font-text: "Geist", system-ui, sans-serif;
+  --font-display: "Nunito", system-ui, sans-serif;
+  --font-text: "Nunito", system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  --display-weight: 500;
-  --display-tracking: -0.035em;
-  --display-tracking-xl: -0.045em;
+  --display-weight: 600;
+  --display-tracking: -0.025em;
+  --display-tracking-xl: -0.035em;
 }
 </style>
 <link rel="stylesheet" href="../assets/ui/base.css">
@@ -279,7 +279,9 @@ main > section.section:last-of-type { padding-bottom: var(--s-9, 96px); }
   </div>
 </footer>
 
-<nav class="actionbar" aria-label="Hızlı eylemler">
+<nav class="actionbar actionbar--call" aria-label="Hızlı eylemler">
+  <a class="ab-item" href="tel:+905309694010"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233a14 14 0 0 0 6.392 6.384"/></svg><span>Ara</span></a>
+  <a class="ab-item" href="https://wa.me/905309694010"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092a10 10 0 1 0-4.777-4.719"/></svg><span>WhatsApp</span></a>
   <a class="btn btn--primary" href="../iletisim/#gorusme">Görüşme planlayın</a>
 </nav>
 

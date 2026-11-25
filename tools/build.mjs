@@ -114,26 +114,28 @@ ${cta}    <div class="closing__links">
   </div>
 </footer>
 
-<nav class="actionbar" aria-label="${esc(t.quick)}">
+<nav class="actionbar actionbar--call" aria-label="${esc(t.quick)}">
+  <a class="ab-item" href="tel:${PHONE}">${ico('phone')}<span>${esc(t.call)}</span></a>
+  <a class="ab-item" href="https://wa.me/905309694010">${ico('message-circle')}<span>WhatsApp</span></a>
   <a class="btn btn--primary" href="${c.href(l, 'contact', '#gorusme')}">${esc(t.cta)}</a>
 </nav>`;
 }
 
 const FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">`;
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400..700&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">`;
 const ROOT_STYLE = `<style>
 :root {
   --p-bg: #ffffff; --p-surface: #f1f5f9; --p-ink: #0b1220; --p-muted: #4a5b72;
   --p-accent: #0a6bc0; --p-accent-ink: #ffffff; --p-action: #0a6bc0; --p-action-ink: #ffffff;
   --p-inv-bg: #0b1220; --p-inv-surface: #181f2d; --p-inv-ink: #ffffff; --p-inv-muted: #979ba3;
   --p-inv-accent: #ffffff; --p-inv-accent-ink: #0b1220; --p-inv-action: #ffffff; --p-inv-action-ink: #0b1220;
-  --font-display: "Geist", system-ui, sans-serif;
-  --font-text: "Geist", system-ui, sans-serif;
+  --font-display: "Nunito", system-ui, sans-serif;
+  --font-text: "Nunito", system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  --display-weight: 500;
-  --display-tracking: -0.035em;
-  --display-tracking-xl: -0.045em;
+  --display-weight: 600;
+  --display-tracking: -0.025em;
+  --display-tracking-xl: -0.035em;
 }
 </style>`;
 
@@ -499,7 +501,7 @@ ${SCRIPTS(c)}`;
 // ---------------------------------------------------------------- home
 function swapChrome(html, c) {
   html = html.replace(/<header class="nav[\s\S]*?<\/header>/, navHtml(c));
-  html = html.replace(/<footer class="footer closing[\s\S]*?<\/footer>\s*<nav class="actionbar"[\s\S]*?<\/nav>/, footerHtml(c));
+  html = html.replace(/<footer class="footer closing[\s\S]*?<\/footer>\s*<nav class="actionbar[^"]*"[\s\S]*?<\/nav>/, footerHtml(c));
   return html;
 }
 function homePages() {

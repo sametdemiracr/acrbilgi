@@ -23,7 +23,7 @@
 <meta name="page-type" content="software">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400..700&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/system.css">
 <link rel="stylesheet" href="../../assets/ui/cards.css">
 <link rel="stylesheet" href="../../assets/motion/motion.css">
@@ -36,16 +36,16 @@
   --p-accent: #0a6bc0; --p-accent-ink: #ffffff; --p-action: #0a6bc0; --p-action-ink: #ffffff;
   --p-inv-bg: #0b1220; --p-inv-surface: #181f2d; --p-inv-ink: #ffffff; --p-inv-muted: #979ba3;
   --p-inv-accent: #ffffff; --p-inv-accent-ink: #0b1220; --p-inv-action: #ffffff; --p-inv-action-ink: #0b1220;
-  --font-display: "Geist", system-ui, sans-serif;
-  --font-text: "Geist", system-ui, sans-serif;
+  --font-display: "Nunito", system-ui, sans-serif;
+  --font-text: "Nunito", system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  --display-weight: 500;
-  --display-tracking: -0.035em;
-  --display-tracking-xl: -0.045em;
+  --display-weight: 600;
+  --display-tracking: -0.025em;
+  --display-tracking-xl: -0.035em;
 }
 </style>
 <link rel="stylesheet" href="../../assets/ui/base.css">
-<link rel="stylesheet" href="../../assets/ui/terminal-run/fragment.css">
+<link rel="stylesheet" href="../../assets/ui/files/fragment.css">
 <link rel="stylesheet" href="../../assets/site.css">
 <script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 <script src="../../assets/backgrounds/backgrounds.js"></script>
@@ -201,7 +201,7 @@ main > section.section:last-of-type { padding-bottom: var(--s-9, 96px); }
       </div>
       <div class="hero__art span-6 start-7">
         <div class="ly-piece ly-piece--main frag" style="--w:440px" data-ui-loop>
-<div class="ui ui-panel ui-term" data-ui="terminal-run"><div class="ui-term__head"><span class="ui-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="ui-term__title">esitleme</span><span class="ui-meta">sh</span><span class="ui-spacer"></span></div><div class="ui-term__screen" data-term-screen><div class="ui-term__track" data-term-track><div class="ui-term__ln ui-term__cmd"><span class="ui-term__cwd">~/<span class="ui-term__up">acr-portal/</span>esitleme</span><span class="ui-term__sig">$</span><span class="ui-term__typed" data-term-cmd>esitle --mikro</span></div><div class="ui-term__ln ui-term__meter" data-term-out data-term-meter><span class="ui-term__bar" style="--p:1"><i></i></span><span class="ui-term__count" data-term-count>4 / 4 tables</span></div><div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">cari_hesaplar</span><span class="ui-term__n">312 records</span><span class="ui-term__t">0.4 s</span></div><div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">stok_kartlari</span><span class="ui-term__n">1,204 records</span><span class="ui-term__t">0.9 s</span></div><div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">siparisler</span><span class="ui-term__n">86 records</span><span class="ui-term__t">0.3 s</span></div><div class="ui-term__ln ui-term__log" data-term-out data-term-step><svg class="ui-term__tick" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="ui-term__path">tahsilatlar</span><span class="ui-term__n">41 records</span><span class="ui-term__t">0.2 s</span></div><div class="ui-term__ln ui-term__gap" data-term-out aria-hidden="true"></div><div class="ui-term__ln ui-term__sum" data-term-out><span class="ui-term__key">Transferred</span><span class="ui-term__val">1,643 records</span><span class="ui-term__dim">(4 tables)</span></div><div class="ui-term__ln ui-term__done" data-term-out data-term-done><span class="ui-term__ok"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.3 2.4 2.4 4.6-5"/></svg></span><b>Done</b><span class="ui-term__dim">1.8 s</span></div><div class="ui-term__ln ui-term__cmd" data-term-next><span class="ui-term__cwd">~/<span class="ui-term__up">acr-portal/</span>esitleme</span><span class="ui-term__sig">$</span><span class="ui-term__typed"></span><i class="ui-term__caret" aria-hidden="true"></i></div></div></div></div>
+<div class="ui ui-files" data-ui="files" data-reading="Reading {n} of {total}"><div class="ui-files__status"><span class="ui-dot"></span><span data-files-status>6 sources synced</span></div><ul class="ui-files__grid"><li class="ui-file is-done"><span class="ui-file__icon"><svg class="ui-icon" viewBox="0 0 16 16" aria-hidden="true" style="width:22px;height:22px"><ellipse cx="8" cy="4" rx="5" ry="2"/><path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/></svg></span><span class="ui-file__name">Customer accounts</span><span class="ui-file__kind">Mikro</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li><li class="ui-file is-done"><span class="ui-file__icon"><svg class="ui-icon" viewBox="0 0 16 16" aria-hidden="true" style="width:22px;height:22px"><ellipse cx="8" cy="4" rx="5" ry="2"/><path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/></svg></span><span class="ui-file__name">Stock cards</span><span class="ui-file__kind">Mikro</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li><li class="ui-file is-done"><span class="ui-file__icon"><svg class="ui-icon" viewBox="0 0 16 16" aria-hidden="true" style="width:22px;height:22px"><ellipse cx="8" cy="4" rx="5" ry="2"/><path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/></svg></span><span class="ui-file__name">Orders</span><span class="ui-file__kind">Mikro</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li><li class="ui-file is-done"><span class="ui-file__icon"><svg class="ui-icon" viewBox="0 0 16 16" aria-hidden="true" style="width:22px;height:22px"><ellipse cx="8" cy="4" rx="5" ry="2"/><path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/></svg></span><span class="ui-file__name">Production orders</span><span class="ui-file__kind">Mikro</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li><li class="ui-file is-done"><span class="ui-file__icon"><img src="../../assets/icons/xlsx.svg" alt=""></span><span class="ui-file__name">Sales report</span><span class="ui-file__kind">Excel</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li><li class="ui-file is-done"><span class="ui-file__icon"><img src="../../assets/icons/power-bi.svg" alt=""></span><span class="ui-file__name">Management dashboard</span><span class="ui-file__kind">Power BI</span><span class="ui-file__bar"><i></i></span><span class="ui-file__check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 8.2 2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li></ul></div>
         </div>
       </div>
     </div></div>
@@ -270,7 +270,9 @@ main > section.section:last-of-type { padding-bottom: var(--s-9, 96px); }
   </div>
 </footer>
 
-<nav class="actionbar" aria-label="Quick actions">
+<nav class="actionbar actionbar--call" aria-label="Quick actions">
+  <a class="ab-item" href="tel:+905309694010"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233a14 14 0 0 0 6.392 6.384"/></svg><span>Call</span></a>
+  <a class="ab-item" href="https://wa.me/905309694010"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092a10 10 0 1 0-4.777-4.719"/></svg><span>WhatsApp</span></a>
   <a class="btn btn--primary" href="../../en/contact/#gorusme">Book a meeting</a>
 </nav>
 
