@@ -271,3 +271,20 @@ html[data-ground="sky"] { --ground-bg: #dbe9f8; --ground-surface: #eef5fd; --gro
 .stat-card { align-items: center; }
 .chips a.chip { text-decoration: none; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+/* ---- every section sits on a white, softly shadowed panel over a pale blue ground ---- */
+main > .section { background: linear-gradient(180deg, #f3f8fd 0%, #e9f1fa 100%); }
+main > .section.ground-surface { background: linear-gradient(180deg, #e9f1fa 0%, #dde9f7 100%); }
+main > .section > .wrap { position: relative; isolation: isolate; }
+main > .section > .wrap::before { content: ""; position: absolute; z-index: -2; inset: -36px -44px; border-radius: 28px; background: #fff;
+  box-shadow: 0 34px 70px -40px rgb(10 70 140 / .32), 0 6px 18px -10px rgb(10 70 140 / .12), 0 0 0 1px rgb(10 107 192 / .08); }
+main > .section > .wrap::after { content: ""; position: absolute; z-index: -1; inset: -36px -44px; border-radius: 28px; pointer-events: none;
+  background:
+    radial-gradient(circle at 100% 0%, rgb(10 107 192 / .09) 0 150px, transparent 151px),
+    radial-gradient(circle at 96% 8%, rgb(10 107 192 / .06) 0 80px, transparent 81px),
+    radial-gradient(circle, rgb(10 107 192 / .16) 1.1px, transparent 1.6px) 100% 0 / 20px 20px;
+  -webkit-mask-image: radial-gradient(circle at 100% 0%, #000 0, transparent 46%); mask-image: radial-gradient(circle at 100% 0%, #000 0, transparent 46%); }
+.section-head h2::before, #sorular-h::before { content: ""; display: block; width: 44px; height: 5px; border-radius: 99px; margin-bottom: var(--s-4); background: linear-gradient(90deg, #0a6bc0, #4fb0f5); }
+.sec-bubbles::before { display: none; }
+@media (max-width: 1023px) { main > .section > .wrap::before, main > .section > .wrap::after { inset: -28px -24px; } }
+@media (max-width: 639px) { main > .section > .wrap::before, main > .section > .wrap::after { inset: -20px -12px; border-radius: 22px; } .section-head h2::before { margin-bottom: var(--s-3); } }
