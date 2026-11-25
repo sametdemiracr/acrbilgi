@@ -207,17 +207,19 @@ html[data-ground="sky"] { --ground-bg: #dbe9f8; --ground-surface: #eef5fd; --gro
 .ly-piece--main .d-main { gap: 10px; }
 @media (max-width: 639px) { .pw-row { grid-template-columns: 30px minmax(0, 1fr) auto; } .pw-row .num { display: none; } }
 
-/* ---- phone: a dark band at the foot with call, WhatsApp and the form ---- */
+/* ---- phone: a light band at the foot with three clearly different buttons ---- */
 .ly-piece--main .d-win__body { min-height: 620px; }
 @media (max-width: 639px) {
-  .actionbar--call { background: #0b1220; border-top: 1px solid rgb(255 255 255 / .08); grid-template-columns: auto auto minmax(0, 1fr); gap: var(--s-1); padding-inline: var(--s-3); }
-  .ab-item { display: flex; align-items: center; justify-content: center; gap: 7px; height: 48px; padding: 0 12px; border-radius: var(--r-btn); color: #fff; text-decoration: none; font: 500 14px/1 var(--font-text); white-space: nowrap; min-width: 0; }
+  .actionbar--call { background: #fff; border-top: 1px solid rgb(11 18 32 / .1); box-shadow: 0 -10px 30px -18px rgb(11 18 32 / .35); grid-template-columns: auto auto minmax(0, 1fr); gap: 6px; padding-inline: var(--s-3); }
+  .ab-item { display: flex; align-items: center; justify-content: center; gap: 7px; height: 48px; padding: 0 14px; border-radius: var(--r-btn); text-decoration: none; font: 600 14px/1 var(--font-text); white-space: nowrap; min-width: 0; }
   .ab-item svg { width: 19px; height: 19px; flex: none; }
-  .ab-item:active { background: rgb(255 255 255 / .12); }
-  .actionbar--call .btn--primary { font-size: 14px; padding-inline: var(--s-3); }
+  .ab-item--call { background: linear-gradient(150deg, #1d2432, #0b1220); color: #fff; }
+  .ab-item--wa { background: #25d366; color: #052e1a; }
+  .ab-item:active { filter: brightness(.92); }
+  .actionbar--call .btn--primary { font-size: 14px; font-weight: 600; padding-inline: var(--s-3); }
   .pw-list, .pw-chart { display: none; }
 }
-
+@media (max-width: 374px) { .ab-item--call span { display: none; } }
 
 /* ---- questions: cards instead of ruled rows, a talk tile, tile stats ---- */
 .faq { display: grid; gap: var(--s-3); }

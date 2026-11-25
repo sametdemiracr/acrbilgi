@@ -115,8 +115,8 @@ ${cta}    <div class="closing__links">
 </footer>
 
 <nav class="actionbar actionbar--call" aria-label="${esc(t.quick)}">
-  <a class="ab-item" href="tel:${PHONE}">${ico('phone')}<span>${esc(t.call)}</span></a>
-  <a class="ab-item" href="https://wa.me/905309694010">${ico('message-circle')}<span>WhatsApp</span></a>
+  <a class="ab-item ab-item--call" href="tel:${PHONE}">${ico('phone')}<span>${esc(t.call)}</span></a>
+  <a class="ab-item ab-item--wa" href="https://wa.me/905309694010">${ico('message-circle')}<span>WhatsApp</span></a>
   <a class="btn btn--primary" href="${c.href(l, 'contact', '#gorusme')}">${esc(t.cta)}</a>
 </nav>`;
 }
