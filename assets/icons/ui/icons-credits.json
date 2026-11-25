@@ -1,5 +1,16 @@
 [
   {
+    "file": "ui-award.svg",
+    "icon": "ui:award",
+    "name": "Award",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
     "file": "ui-badge-check.svg",
     "icon": "ui:badge-check",
     "name": "Badge Check",
@@ -14,6 +25,17 @@
     "file": "ui-boxes.svg",
     "icon": "ui:boxes",
     "name": "Boxes",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
+    "file": "ui-building-2.svg",
+    "icon": "ui:building-2",
+    "name": "Building",
     "kind": "line",
     "source": "@iconify-json/lucide@1.2.100",
     "author": "Lucide Contributors",
@@ -355,6 +377,17 @@
     "file": "ui-target.svg",
     "icon": "ui:target",
     "name": "Target",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
+    "file": "ui-trending-up.svg",
+    "icon": "ui:trending-up",
+    "name": "Trending Up",
     "kind": "line",
     "source": "@iconify-json/lucide@1.2.100",
     "author": "Lucide Contributors",

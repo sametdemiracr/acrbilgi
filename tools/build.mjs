@@ -392,31 +392,69 @@ function aboutPage(lang) {
     { '@type': 'Organization', '@id': ORIGIN + '/#organization', name: 'ACR Bilgi Sistemleri', url: ORIGIN + '/', foundingDate: '2005', employee: a.team.map(([n, r]) => ({ '@type': 'Person', name: n, jobTitle: r })) },
     crumbLd(c, label),
   ];
-  const html = `${head(c, { title: `${a.title} | ACR Bilgi`, desc: a.desc, ld })}
+  const AREA_ICONS = ['award', 'workflow', 'server', 'megaphone'];
+  const VAR = ['tile--feature', 'tile--dots', 'tile--mist', 'tile--wide'];
+  const initials = (n) => n.split(' ').map((w) => w[0]).slice(0, 2).join('');
+  const areas = a.areas.map(([n, d], i) => `<article class="tile ${VAR[i]} b${i + 1}">${chip(AREA_ICONS[i])}${i === 0 ? `<span class="tile__mark" aria-hidden="true">${ico('award')}</span>` : ''}<h3 class="t-lead">${esc(n)}</h3><p class="${i === 0 ? '' : 'muted'}">${esc(d)}</p></article>`).join('\n        ');
+  const rules = a.rules.map(([n, d], i) => `<article class="tile ${['tile--dots', 'tile--mist', 'tile--dots'][i]}">${chip(['file-text', 'circle-check', 'lock-open'][i])}<span class="tile__num tile__num--abs">0${i + 1}</span><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(d)}</p></article>`).join('');
+  const team = a.team.map(([n, r]) => `<article class="tile tile--person"><span class="avatar" aria-hidden="true">${esc(initials(n))}</span><div><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(r)}</p></div></article>`).join('');
+  const results = a.results.map(([n, h, sec, d], i) => `<article class="tile case ${i % 2 ? 'tile--mist' : 'tile--dots'}"><span class="chip chip--sec">${esc(sec)}</span><p class="case__stat">${esc(n)}</p><h3 class="t-lead">${esc(h)}</h3><p class="muted">${esc(d)}</p></article>`).join('');
+  const steps = a.steps.map(([n, d], i) => `<div class="flow__step"><span class="flow__node">${ico(['search', 'file-text', 'hammer', 'life-buoy'][i])}</span><span class="flow__num">0${i + 1}</span><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(d)}</p></div>`).join('');
+  const stats = a.figs.map(([n, d]) => `<div class="stat-card"><b>${esc(n)}</b><span>${esc(d)}</span></div>`).join('');
+  const html = `${head(c, { title: `${a.title} | ACR Bilgi`, desc: a.desc, ld, extraCss: '.flow--4 { } @media (min-width: 1024px) { .flow--4 { grid-template-columns: repeat(4, 1fr); } .flow--4::before { right: 12%; } } .case { gap: var(--s-3); } .case h3 { margin-top: 0; }' })}
 <body>
 ${navHtml(c)}
 
 <main id="top">
-${statementHero(c, { h1: a.h1, lead: a.lead, factsArr: a.figs.map(([n, d]) => [d, n]), crumb: label })}
+  <section class="hero hero--collage" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        ${crumbHtml(c, label)}
+        <h1 id="hero-h">${esc(a.h1)}</h1>
+        <p class="hero__lead">${esc(a.lead)}</p>
+        <div class="btn-row"><a class="btn btn--primary" href="${c.href(lang, 'contact', '#gorusme')}">${esc(t.cta)}</a><a class="btn btn--secondary" href="${c.href(lang, 'home', '#altyapi')}">${esc(t.seeServices)}</a></div>
+        <div class="chips"><span class="chip">${ico('award')}<span>${lang === 'tr' ? 'Yetkili Mikro çözüm ortağı' : 'Authorised Mikro partner'}</span></span><span class="chip">${ico('building-2')}<span>${esc(t.byline)}</span></span></div>
+      </div>
+      <div class="hero__art span-6 start-7">
+        <div class="ab-stats">${stats}</div>
+      </div>
+    </div></div>
+  </section>
 
-  <section class="section" aria-labelledby="what-h">
-    <div class="wrap grid grid--top">
-      <div class="span-6"><div class="section-head"><h2 id="what-h">${esc(a.whatH)}</h2><p>${esc(a.what)}</p></div></div>
-      <div class="span-6 start-7"><div class="tile-grid">${a.rules.map(([n, d], i) => `<article class="tile ${['tile--dots', 'tile--mist', 'tile--wide'][i]}" style="grid-template-columns:auto 1fr;column-gap:var(--s-4)">${chip(['file-text', 'circle-check', 'lock-open'][i], true)}<div><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(d)}</p></div></article>`).join('')}</div></div>
+  <section class="section sec-bubbles" aria-labelledby="what-h">
+    <div class="wrap">
+      <div class="grid grid--top"><div class="span-6"><div class="section-head"><h2 id="what-h">${esc(a.whatH)}</h2></div></div><div class="span-6 start-7"><p class="t-lead">${esc(a.what)}</p></div></div>
+      <div class="bento" style="margin-top:var(--s-6)">
+        ${areas}
+      </div>
     </div>
   </section>
 
-  <section class="section ground-surface sec-bubbles" aria-labelledby="team-h">
+  <section class="section ground-surface sec-bubbles" aria-labelledby="rules-h">
     <div class="wrap">
-      <div class="section-head"><h2 id="team-h">${esc(a.teamH)}</h2><p>${esc(a.teamP)}</p></div>
-      <div class="tile-grid tile-grid--4">${a.team.map(([n, r]) => `<article class="tile tile--dots">${chip('user')}<div><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(r)}</p></div></article>`).join('')}</div>
+      <div class="section-head"><h2 id="rules-h">${esc(a.ruleH)}</h2></div>
+      <div class="tile-grid tile-grid--3">${rules}</div>
     </div>
   </section>
 
   <section class="section" aria-labelledby="res-h">
     <div class="wrap">
       <div class="section-head"><h2 id="res-h">${esc(a.resH)}</h2><p>${esc(a.resP)}</p></div>
-      <div class="res">${a.results.map(([n, h, d]) => `<div><div><p class="t-stat">${esc(n)}</p></div><div><h3 class="t-lead">${esc(h)}</h3><p>${esc(d)}</p></div></div>`).join('')}</div>
+      <div class="tile-grid tile-grid--3 res-grid">${results}</div>
+    </div>
+  </section>
+
+  <section class="section ground-surface sec-bubbles" aria-labelledby="team-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="team-h">${esc(a.teamH)}</h2><p>${esc(a.teamP)}</p></div>
+      <div class="tile-grid tile-grid--4">${team}</div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="start-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="start-h">${esc(a.cta[0])}</h2><p>${esc(a.cta[1])}</p></div>
+      <div class="flow flow--4" style="margin-top:var(--s-6)">${steps}</div>
     </div>
   </section>
 </main>
