@@ -55,6 +55,17 @@
     "trademark": false
   },
   {
+    "file": "ui-calculator.svg",
+    "icon": "ui:calculator",
+    "name": "Calculator",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
     "file": "ui-calendar-clock.svg",
     "icon": "ui:calendar-clock",
     "name": "Calendar Clock",
@@ -121,6 +132,28 @@
     "trademark": false
   },
   {
+    "file": "ui-clock.svg",
+    "icon": "ui:clock",
+    "name": "Clock",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
+    "file": "ui-cog.svg",
+    "icon": "ui:cog",
+    "name": "Cog",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
     "file": "ui-database.svg",
     "icon": "ui:database",
     "name": "Database",
@@ -179,6 +212,17 @@
     "file": "ui-hard-drive.svg",
     "icon": "ui:hard-drive",
     "name": "Hard Drive",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
+    "file": "ui-hard-hat.svg",
+    "icon": "ui:hard-hat",
+    "name": "Hard Hat",
     "kind": "line",
     "source": "@iconify-json/lucide@1.2.100",
     "author": "Lucide Contributors",
@@ -407,6 +451,17 @@
     "trademark": false
   },
   {
+    "file": "ui-shirt.svg",
+    "icon": "ui:shirt",
+    "name": "Shirt",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
     "file": "ui-shopping-cart.svg",
     "icon": "ui:shopping-cart",
     "name": "Shopping Cart",
@@ -451,6 +506,17 @@
     "trademark": false
   },
   {
+    "file": "ui-truck.svg",
+    "icon": "ui:truck",
+    "name": "Truck",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
     "file": "ui-user.svg",
     "icon": "ui:user",
     "name": "User",
@@ -465,6 +531,17 @@
     "file": "ui-users.svg",
     "icon": "ui:users",
     "name": "Users",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
+    "file": "ui-utensils.svg",
+    "icon": "ui:utensils",
+    "name": "Utensils",
     "kind": "line",
     "source": "@iconify-json/lucide@1.2.100",
     "author": "Lucide Contributors",

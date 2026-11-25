@@ -335,12 +335,26 @@ function contactPage(lang) {
       openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '18:00' }] },
     crumbLd(c, lang === 'tr' ? 'İletişim' : 'Contact'),
   ];
+  const heroCards = k.heroCards.map(([n, d, ic]) => `<div class="stat-card">${chip(ic, true)}<b>${esc(n)}</b><span>${esc(d)}</span></div>`).join('');
   const html = `${head(c, { title: k.title, desc: k.desc, ld })}
 <body>
 ${navHtml(c)}
 
 <main id="top">
-${statementHero(c, { h1: k.h1, lead: k.lead, crumb: lang === 'tr' ? 'İletişim' : 'Contact' })}
+  <section class="hero hero--collage" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        ${crumbHtml(c, lang === 'tr' ? 'İletişim' : 'Contact')}
+        <h1 id="hero-h">${esc(k.h1)}</h1>
+        <p class="hero__lead">${esc(k.lead)}</p>
+        <div class="btn-row"><a class="btn btn--primary" href="#gorusme">${esc(t.cta)}</a></div>
+        <div class="chips"><a class="chip" href="tel:${PHONE}">${ico('phone')}<span>+90 530 969 40 10</span></a><a class="chip" href="https://wa.me/905309694010">${ico('message-circle')}<span>WhatsApp</span></a><a class="chip" href="mailto:info@acrbilgi.com">${ico('mail')}<span>info@acrbilgi.com</span></a></div>
+      </div>
+      <div class="hero__art span-6 start-7">
+        <div class="ab-stats">${heroCards}</div>
+      </div>
+    </div></div>
+  </section>
 
   <section class="section" id="gorusme" aria-labelledby="gorusme-h">
     <div class="wrap grid grid--top">
@@ -404,6 +418,12 @@ function aboutPage(lang) {
   const team = a.team.map(([n, r]) => `<article class="tile tile--person"><span class="avatar" aria-hidden="true">${esc(initials(n))}</span><div><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(r)}</p></div></article>`).join('');
   const results = a.results.map(([n, h, sec, d], i) => `<article class="tile case ${i % 2 ? 'tile--mist' : 'tile--dots'}"><span class="chip chip--sec">${esc(sec)}</span><p class="case__stat">${esc(n)}</p><h3 class="t-lead">${esc(h)}</h3><p class="muted">${esc(d)}</p></article>`).join('');
   const steps = a.steps.map(([n, d], i) => `<div class="flow__step"><span class="flow__node">${ico(['search', 'file-text', 'hammer', 'life-buoy'][i])}</span><span class="flow__num">0${i + 1}</span><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(d)}</p></div>`).join('');
+  const PROF_ICONS = ['building-2', 'calendar-clock', 'map-pin', 'award', 'globe', 'clock'];
+  const profile = a.profile.facts.map(([k, v], i) => `<article class="tile tile--info ${i % 2 ? 'tile--mist' : 'tile--dots'}">${chip(PROF_ICONS[i], true)}<div><span class="muted t-small">${esc(k)}</span><b>${esc(v)}</b></div></article>`).join('');
+  const WHY_VAR = ['tile--feature', 'tile--dots', 'tile--mist'];
+  const why = a.why.items.map(([n, d], i) => `<article class="tile ${WHY_VAR[i]}">${chip(['users', 'trending-up', 'workflow'][i])}<h3 class="t-lead">${esc(n)}</h3><p class="${i === 0 ? '' : 'muted'}">${esc(d)}</p></article>`).join('') + `<article class="tile tile--dark tile--cta">${chip('shield-check')}<h3 class="t-lead">${esc(a.why.cta[0])}</h3><p>${esc(a.why.cta[1])}</p><a class="link" href="${c.href(lang, 'contact', '#gorusme')}">${esc(t.cta)}</a></article>`;
+  const SEC_ICONS = ['truck', 'shirt', 'utensils', 'hard-hat', 'cog', 'shopping-cart', 'globe', 'calculator'];
+  const sectors = a.sectors.items.map((n, i) => `<article class="tile tile--sector ${i % 2 ? 'tile--mist' : 'tile--dots'}">${chip(SEC_ICONS[i], true)}<h3>${esc(n)}</h3></article>`).join('');
   const stats = a.figs.map(([n, d]) => `<div class="stat-card"><b>${esc(n)}</b><span>${esc(d)}</span></div>`).join('');
   const html = `${head(c, { title: `${a.title} | ACR Bilgi`, desc: a.desc, ld, extraCss: '.flow--4 { } @media (min-width: 1024px) { .flow--4 { grid-template-columns: repeat(4, 1fr); } .flow--4::before { right: 12%; } } .case { gap: var(--s-3); } .case h3 { margin-top: 0; }' })}
 <body>
@@ -425,12 +445,26 @@ ${navHtml(c)}
     </div></div>
   </section>
 
+  <section class="section sec-bubbles" aria-labelledby="profile-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6"><div class="section-head"><h2 id="profile-h">${esc(a.profile.h)}</h2><p>${esc(a.profile.p)}</p></div></div>
+      <div class="span-6 start-7"><div class="tile-grid tile-grid--2">${profile}</div></div>
+    </div>
+  </section>
+
   <section class="section sec-bubbles" aria-labelledby="what-h">
     <div class="wrap">
       <div class="grid grid--top"><div class="span-6"><div class="section-head"><h2 id="what-h">${esc(a.whatH)}</h2></div></div><div class="span-6 start-7"><p class="t-lead">${esc(a.what)}</p></div></div>
       <div class="bento" style="margin-top:var(--s-6)">
         ${areas}
       </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="why-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="why-h">${esc(a.why.h)}</h2><p>${esc(a.why.p)}</p></div>
+      <div class="tile-grid tile-grid--4">${why}</div>
     </div>
   </section>
 
@@ -441,14 +475,21 @@ ${navHtml(c)}
     </div>
   </section>
 
-  <section class="section" aria-labelledby="res-h">
+  <section class="section sec-bubbles" aria-labelledby="sec-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="sec-h">${esc(a.sectors.h)}</h2><p>${esc(a.sectors.p)}</p></div>
+      <div class="tile-grid tile-grid--4">${sectors}</div>
+    </div>
+  </section>
+
+  <section class="section ground-surface" aria-labelledby="res-h">
     <div class="wrap">
       <div class="section-head"><h2 id="res-h">${esc(a.resH)}</h2><p>${esc(a.resP)}</p></div>
       <div class="tile-grid tile-grid--3 res-grid">${results}</div>
     </div>
   </section>
 
-  <section class="section ground-surface sec-bubbles" aria-labelledby="team-h">
+  <section class="section sec-bubbles" aria-labelledby="team-h">
     <div class="wrap">
       <div class="section-head"><h2 id="team-h">${esc(a.teamH)}</h2><p>${esc(a.teamP)}</p></div>
       <div class="tile-grid tile-grid--4">${team}</div>
