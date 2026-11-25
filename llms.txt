@@ -1,0 +1,14 @@
+# ACR Bilgi
+
+> ACR Bilgi, Logo ve Mikro kullanan şirketler için özel yazılım ve yönetim portalları geliştiren bir yazılım danışmanlığı firmasıdır. Aynı ekip kurumsal donanım, sunucu, güvenlik, Microsoft lisanslama, web sitesi tasarımı ve Google reklam planlaması hizmetleri sunar.
+
+## Hizmetler
+
+- Özel yazılım: Logo veya Mikro'da yapılamayan işleri analiz ve yönetim portalları, özel raporlar, onay akışları ve entegrasyonlar olarak geliştirir. Logo veya Mikro'nun yerine geçmez, onları tamamlar.
+- Donanım, sunucu ve güvenlik: Kurumsal bilgisayar ve sunucu satışı, kurulumu, firewall ve ağ çözümleri, son kullanıcı desteği.
+- Microsoft lisanslama: Şirkete uygun Microsoft lisanslarının belirlenmesi, tedariki ve kurulumu.
+- Web sitesi tasarımı ve Google reklam planlaması.
+
+## Sayfalar
+
+- [Ana sayfa](https://www.acrbilgi.com/): hizmetler, çalışma süreci ve sık sorulan sorular.
