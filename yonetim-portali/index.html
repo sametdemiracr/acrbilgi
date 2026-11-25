@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="tr" data-type="software" data-radius="soft" data-ground="sky" data-buttons="solid" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Analiz ve yönetim portalı geliştirme | ACR Bilgi</title>
+<meta name="description" content="Logo ve Mikro verinizi tek ekranda izlediğiniz analiz ve yönetim portalları. Satış, stok, cari ve onay süreçleri için özel portal geliştirme.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="ACR Bilgi">
+<meta property="og:title" content="Analiz ve yönetim portalı geliştirme | ACR Bilgi">
+<meta property="og:description" content="Logo ve Mikro verinizi tek ekranda izlediğiniz analiz ve yönetim portalları. Satış, stok, cari ve onay süreçleri için özel portal geliştirme.">
+<meta property="og:url" content="https://www.acrbilgi.com/yonetim-portali/">
+<meta property="og:image" content="https://www.acrbilgi.com/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://www.acrbilgi.com/yonetim-portali/">
+<link rel="alternate" hreflang="tr" href="https://www.acrbilgi.com/yonetim-portali/">
+<link rel="alternate" hreflang="en" href="https://www.acrbilgi.com/en/management-portals/">
+<link rel="alternate" hreflang="x-default" href="https://www.acrbilgi.com/yonetim-portali/">
+<meta name="site-kind" content="software">
+<meta name="page-type" content="software">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/system.css">
+<link rel="stylesheet" href="../assets/ui/cards.css">
+<link rel="stylesheet" href="../assets/motion/motion.css">
+<link rel="stylesheet" href="../assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="../assets/layout/layout.css">
+<link rel="stylesheet" href="../assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #ffffff; --p-surface: #f1f5f9; --p-ink: #0b1220; --p-muted: #4a5b72;
+  --p-accent: #0a6bc0; --p-accent-ink: #ffffff; --p-action: #0a6bc0; --p-action-ink: #ffffff;
+  --p-inv-bg: #0b1220; --p-inv-surface: #181f2d; --p-inv-ink: #ffffff; --p-inv-muted: #979ba3;
+  --p-inv-accent: #ffffff; --p-inv-accent-ink: #0b1220; --p-inv-action: #ffffff; --p-inv-action-ink: #0b1220;
+  --font-display: "Geist", system-ui, sans-serif;
+  --font-text: "Geist", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --display-weight: 500;
+  --display-tracking: -0.035em;
+  --display-tracking-xl: -0.045em;
+}
+</style>
+<link rel="stylesheet" href="../assets/ui/base.css">
+<link rel="stylesheet" href="../assets/ui/toggles/fragment.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="../assets/backgrounds/backgrounds.js"></script>
+<style>
+.rows .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small); }
+.hero__art { background:
+    radial-gradient(70% 60% at 18% 12%, color-mix(in oklab, var(--ground-surface) 80%, white), transparent 70%),
+    radial-gradient(60% 50% at 90% 100%, color-mix(in oklab, var(--ground-bg) 80%, var(--ground-accent)), transparent 70%),
+    var(--ground-bg); }
+.hero__proof { font-size: var(--t-small); color: var(--muted); }
+.hero--statement.hero--compact { height: auto; min-height: 0; padding-bottom: var(--s-9, 96px); }
+.hero--compact .hero__in { gap: var(--s-8); }
+.hero--compact .hero__facts { margin-top: var(--s-4); }
+main > section.section { height: auto; min-height: 0; }
+footer.closing:not(:has(.closing__cta)) { height: auto; }
+main > section.section:last-of-type { padding-bottom: var(--s-9, 96px); }
+.sx .panel { --p-h: 560px; }
+.faq h3 { font-size: var(--t-lead); }
+.crumbs { display: flex; gap: var(--s-2); font-size: var(--t-small); color: var(--muted); margin-bottom: var(--s-4); }
+.crumbs a { color: inherit; }
+.prose { max-width: 62ch; }
+.prose h2 { font-size: var(--t-h3); margin: var(--s-8) 0 var(--s-3); }
+.prose p, .prose li { font-size: var(--t-body); line-height: 1.7; }
+.prose ul { padding-left: 1.2em; display: grid; gap: var(--s-1); margin: var(--s-3) 0 0; }
+.prose .updated { color: var(--muted); font-size: var(--t-small); margin-top: var(--s-8); }
+.team { display: grid; gap: var(--s-5); grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 1024px) { .team { grid-template-columns: repeat(4, 1fr); } }
+.team div { border-top: 1px solid var(--line); padding-top: var(--s-3); }
+.team b { display: block; font-weight: 500; font-size: var(--t-lead); }
+.res { display: grid; gap: 0; }
+.res > div { display: grid; grid-template-columns: minmax(120px, 1fr) 4fr; gap: var(--s-5); padding: var(--s-5) 0; border-top: 1px solid var(--line); }
+.res .t-stat { font-family: var(--font-display); }
+@media (max-width: 639px) { .res > div { grid-template-columns: 1fr; gap: var(--s-2); } }
+.page-links { display: grid; gap: var(--s-2); margin-top: var(--s-4); }
+@media (max-width: 639px) { .sx .panel { --p-h: 340px; } }
+.hero__art > .ly-piece--main.frag { left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(var(--w), calc(100% - 48px)); } .steps3 { margin-top: var(--s-9, 96px); } @media (max-width: 639px) { .hero__art > .ly-piece--main.frag { top: var(--s-5); transform: translateX(-50%); } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.acrbilgi.com/yonetim-portali/#service",
+      "name": "Analiz ve yönetim portalı geliştirme",
+      "description": "Logo ve Mikro verinizi tek ekranda izlediğiniz analiz ve yönetim portalları. Satış, stok, cari ve onay süreçleri için özel portal geliştirme.",
+      "provider": {
+        "@id": "https://www.acrbilgi.com/#organization"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "İstanbul"
+        },
+        {
+          "@type": "Country",
+          "name": "Türkiye"
+        }
+      ],
+      "inLanguage": "tr-TR",
+      "url": "https://www.acrbilgi.com/yonetim-portali/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana sayfa",
+          "item": "https://www.acrbilgi.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Yönetim portalı",
+          "item": "https://www.acrbilgi.com/yonetim-portali/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Portal Logo veya Mikro verisini canlı mı gösterir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet. Portal ERP verinize bağlı çalışır; hangi tabloların hangi sıklıkta eşitleneceğini birlikte belirleriz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Portalı kimler kullanabilir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yetkileri siz tanımlarsınız. Her kullanıcı yalnızca kendisine açtığınız veriyi görür."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mevcut raporlarımızı taşıyabilir misiniz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet. Kullandığınız raporları inceler, portalda aynı ya da daha iyi bir kırılımla sunarız."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Excel ve Power BI ile çalışır mı?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet. Raporları Excel olarak alabilir, Power BI panolarını aynı veriyle besleyebilirsiniz."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav nav--centre">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">İçeriğe geç</a>
+    <a class="nav__logo" href="../" aria-label="ACR Bilgi, ana sayfa"><img src="../assets/logo.png" alt="ACR Bilgi" width="150" height="36" style="height:34px;width:auto"></a>
+    <nav class="nav__links" aria-label="Ana menü">
+      <div class="nav__item">
+        <a class="nav__link" href="../#yazilim">Yazılım <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu"><div class="wrap grid"><div class="menu-col span-5"><a href="../ozel-yazilim-gelistirme/">Özel yazılım<span>Logo ve Mikro için</span></a><a href="../logo-ozel-yazilim/">Logo için<span>Rapor, akış, entegrasyon</span></a><a href="../mikro-ozel-yazilim/">Mikro için<span>Yetkili çözüm ortağı</span></a><a href="../yonetim-portali/">Yönetim portalı<span>Analiz ve onay ekranları</span></a></div></div></div>
+      </div>
+      <div class="nav__item">
+        <a class="nav__link" href="../#altyapi">Altyapı <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu"><div class="wrap grid"><div class="menu-col span-5"><a href="../kurumsal-donanim-sunucu/">Donanım ve sunucu<span>Satış, kurulum, yapılandırma</span></a><a href="../firewall-ag-guvenligi/">Firewall ve ağ güvenliği<span>Ağınızı ve verinizi koruyun</span></a><a href="../teknik-destek/">Son kullanıcı desteği<span>Yerinde ve uzaktan</span></a></div></div></div>
+      </div>
+      <div class="nav__item">
+        <a class="nav__link" href="../#lisans">Lisans ve web <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu"><div class="wrap grid"><div class="menu-col span-5"><a href="../microsoft-lisanslama/">Microsoft lisanslama<span>Doğru paket, doğru kurulum</span></a><a href="../web-sitesi-tasarimi/">Web sitesi tasarımı<span>Hızlı, mobil uyumlu</span></a><a href="../google-reklam-planlamasi/">Google reklam planlaması<span>Bütçe, hedefleme, rapor</span></a></div></div></div>
+      </div>
+      <div class="nav__item"><a class="nav__link" href="../hakkimizda/">Hakkımızda</a></div>
+      <div class="nav__item"><a class="nav__link" href="../#sorular">Sorular</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="nav__link" href="../en/management-portals/" hreflang="en" lang="en" title="English">EN</a>
+      <a class="btn btn--primary" href="../iletisim/#gorusme">Görüşme planlayın</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menü">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero hero--collage" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Ana sayfa</a><span aria-hidden="true">/</span><span>Yönetim portalı</span></nav>
+        <h1 id="hero-h">Analiz ve yönetim portalı geliştirme</h1>
+        <p class="hero__lead">Satış, stok, cari ve onay süreçlerini ERP verinizle çalışan tek bir web portalında toplarız. Kimin neyi göreceğini siz belirlersiniz.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="../iletisim/#gorusme">Görüşme planlayın</a><a class="btn btn--secondary" href="../#altyapi">Diğer hizmetleri görün</a></div>
+        <p class="hero__proof">Veri: Logo ve Mikro · Erişim: Tarayıcıdan · Yetki: Kullanıcı bazında</p>
+      </div>
+      <div class="hero__art span-6 start-7">
+        <div class="ly-piece ly-piece--main frag" style="--w:400px" data-ui-loop>
+<div class="ui ui-panel ui-toggles" data-ui="toggles"><div class="ui-head"><svg class="ui-icon ui-toggles__ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.8 13 4v3.6c0 3-2.1 5.4-5 6.6-2.9-1.2-5-3.6-5-6.6V4z"/><path d="m5.8 8 1.6 1.6 3-3.2"/></svg><div class="ui-title">Satış ekibi yetkileri</div><span class="ui-spacer"></span><div class="ui-meta" data-tg-count>4 / 5 açık</div></div><ul class="ui-toggles__list"><li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Kendi müşterilerini görür</span><span class="ui-tg__sub">Cari ve sipariş geçmişi</span></span><button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="Kendi müşterilerini görür"><i></i></button></li><li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Fiyat listesini görür</span><span class="ui-tg__sub">İskonto oranları hariç</span></span><button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="Fiyat listesini görür"><i></i></button></li><li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">İskonto onayı ister</span><span class="ui-tg__sub">Yönetime düşer</span></span><button class="ui-switch" type="button" role="switch" aria-checked="false" aria-label="İskonto onayı ister"><i></i></button></li><li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Rapor indirir</span><span class="ui-tg__sub">Excel olarak</span></span><button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="Rapor indirir"><i></i></button></li><li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Stok durumunu görür</span><span class="ui-tg__sub">Depo bazında</span></span><button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="Stok durumunu görür"><i></i></button></li></ul></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section" id="neler" aria-labelledby="neler-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="neler-h">Neler yapıyoruz</h2></div>
+      <div class="grid">
+        <div class="span-3"><h3 class="t-lead">Satış ve cari analizi</h3><p class="muted">Bayi, ürün ve müşteri bazında satışı tek ekranda izlersiniz.</p></div>
+        <div class="span-3"><h3 class="t-lead">Stok ve depo görünümü</h3><p class="muted">Stok yaşlandırma ve depo durumunu güncel görürsünüz.</p></div>
+        <div class="span-3"><h3 class="t-lead">Onay akışları</h3><p class="muted">Satın alma, iskonto ve avans onaylarını portaldan yönetirsiniz.</p></div>
+        <div class="span-3"><h3 class="t-lead">Yetki yönetimi</h3><p class="muted">Kimin hangi veriyi göreceğini tek ekrandan belirlersiniz.</p></div>
+      </div>
+      <h2 class="t-h3 steps3" style="font-size:var(--t-h3)">Nasıl çalışıyoruz</h2>
+      <div class="grid" style="margin-top:var(--s-5)">
+        <div class="span-4"><span class="step-num">1</span><h3 class="t-lead">Hangi veriyi izlemek istediğinizi yazarız</h3><p class="muted">Raporları, panoları ve yetkileri birlikte netleştiririz.</p></div>
+        <div class="span-4"><span class="step-num">2</span><h3 class="t-lead">Portalı kurar, verinizle sınarız</h3><p class="muted">Portalı ERP verinize bağlar, ekibinizle deneriz.</p></div>
+        <div class="span-4"><span class="step-num">3</span><h3 class="t-lead">Canlıya alır, destek veririz</h3><p class="muted">Girişleri açar, kullanımı gösterir ve sonrasında yanınızda kalırız.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sorular" aria-labelledby="sorular-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head"><h2 id="sorular-h">Sık sorulan sorular</h2></div>
+        <div class="page-links"><span class="t-label muted">İlgili hizmetler</span><a class="link" href="../ozel-yazilim-gelistirme/">Özel yazılım</a><a class="link" href="../logo-ozel-yazilim/">Logo için</a><a class="link" href="../mikro-ozel-yazilim/">Mikro için</a></div>
+      </div>
+      <div class="span-6 start-7">
+        <div class="faq">
+          <div class="faq__item"><h3>Portal Logo veya Mikro verisini canlı mı gösterir?</h3><p>Evet. Portal ERP verinize bağlı çalışır; hangi tabloların hangi sıklıkta eşitleneceğini birlikte belirleriz.</p></div>
+          <div class="faq__item"><h3>Portalı kimler kullanabilir?</h3><p>Yetkileri siz tanımlarsınız. Her kullanıcı yalnızca kendisine açtığınız veriyi görür.</p></div>
+          <div class="faq__item"><h3>Mevcut raporlarımızı taşıyabilir misiniz?</h3><p>Evet. Kullandığınız raporları inceler, portalda aynı ya da daha iyi bir kırılımla sunarız.</p></div>
+          <div class="faq__item"><h3>Excel ve Power BI ile çalışır mı?</h3><p>Evet. Raporları Excel olarak alabilir, Power BI panolarını aynı veriyle besleyebilirsiniz.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer closing footer--dark ground-inverse" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h">İhtiyacınızı birlikte netleştirelim</h2>
+        <p>Yazılım, altyapı, lisans, web ve reklam: tek görüşmede konuşalım.</p>
+      </div>
+      <a class="btn btn--primary btn--xl" href="../iletisim/#gorusme">Görüşme planlayın<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="../" aria-label="ACR Bilgi, ana sayfa"><img src="../assets/logo-white.png" alt="ACR Bilgi" width="150" height="36" style="height:34px;width:auto"></a>
+          <p class="footer__lede">Logo ve Mikro kullanan şirketler için yazılım danışmanlığı ve kurumsal IT hizmetleri.</p>
+        </div>
+        <div class="span-2 footer__col"><h3>Yazılım</h3><ul><li><a href="../ozel-yazilim-gelistirme/">Özel yazılım</a></li><li><a href="../logo-ozel-yazilim/">Logo için</a></li><li><a href="../mikro-ozel-yazilim/">Mikro için</a></li><li><a href="../yonetim-portali/">Yönetim portalı</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Hizmetler</h3><ul><li><a href="../kurumsal-donanim-sunucu/">Donanım ve sunucu</a></li><li><a href="../firewall-ag-guvenligi/">Firewall ve ağ güvenliği</a></li><li><a href="../teknik-destek/">Son kullanıcı desteği</a></li><li><a href="../microsoft-lisanslama/">Microsoft lisanslama</a></li><li><a href="../web-sitesi-tasarimi/">Web sitesi tasarımı</a></li><li><a href="../google-reklam-planlamasi/">Google reklam planlaması</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Şirket</h3><ul><li><a href="../hakkimizda/">Hakkımızda</a></li><li><a href="../iletisim/">İletişim</a></li><li><a href="../kvkk/">KVKK</a></li><li><a href="../gizlilik-ilkesi/">Gizlilik ilkesi</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>İletişim</h3><ul><li><a href="mailto:info@acrbilgi.com">E-posta</a></li><li><a href="tel:+905309694010">Telefon</a></li><li><a href="https://wa.me/905309694010">WhatsApp</a></li><li>Rüzgarlıbahçe, Beykoz</li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 ACR Bilgi</span>
+        <span>Ürün adları ve logolar ilgili sahiplerinin ticari markalarıdır.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Hızlı eylemler">
+  <a class="btn btn--primary" href="../iletisim/#gorusme">Görüşme planlayın</a>
+</nav>
+
+<script type="module" src="../assets/system.js"></script>
+<script type="module" src="../assets/motion/motion.js"></script>
+<script type="module" src="../assets/layout/layout.js"></script>
+</body>
+</html>

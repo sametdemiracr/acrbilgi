@@ -174,16 +174,26 @@
 <header class="nav nav--centre">
   <div class="wrap nav__bar">
     <a class="skip-link" href="#top">İçeriğe geç</a>
-    <a class="nav__logo" href="#top" aria-label="ACR Bilgi, ana sayfa"><img src="assets/logo.png" alt="ACR Bilgi" width="150" height="36" style="height:34px;width:auto"></a>
+    <a class="nav__logo" href="./" aria-label="ACR Bilgi, ana sayfa"><img src="assets/logo.png" alt="ACR Bilgi" width="150" height="36" style="height:34px;width:auto"></a>
     <nav class="nav__links" aria-label="Ana menü">
-      <div class="nav__item"><a class="nav__link" href="#yazilim">Yazılım</a></div>
-      <div class="nav__item"><a class="nav__link" href="#altyapi">Altyapı</a></div>
-      <div class="nav__item"><a class="nav__link" href="#lisans">Lisans ve web</a></div>
-      <div class="nav__item"><a class="nav__link" href="#surec">Süreç</a></div>
-      <div class="nav__item"><a class="nav__link" href="#sorular">Sorular</a></div>
+      <div class="nav__item">
+        <a class="nav__link" href="./#yazilim">Yazılım <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu"><div class="wrap grid"><div class="menu-col span-5"><a href="ozel-yazilim-gelistirme/">Özel yazılım<span>Logo ve Mikro için</span></a><a href="logo-ozel-yazilim/">Logo için<span>Rapor, akış, entegrasyon</span></a><a href="mikro-ozel-yazilim/">Mikro için<span>Yetkili çözüm ortağı</span></a><a href="yonetim-portali/">Yönetim portalı<span>Analiz ve onay ekranları</span></a></div></div></div>
+      </div>
+      <div class="nav__item">
+        <a class="nav__link" href="./#altyapi">Altyapı <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu"><div class="wrap grid"><div class="menu-col span-5"><a href="kurumsal-donanim-sunucu/">Donanım ve sunucu<span>Satış, kurulum, yapılandırma</span></a><a href="firewall-ag-guvenligi/">Firewall ve ağ güvenliği<span>Ağınızı ve verinizi koruyun</span></a><a href="teknik-destek/">Son kullanıcı desteği<span>Yerinde ve uzaktan</span></a></div></div></div>
+      </div>
+      <div class="nav__item">
+        <a class="nav__link" href="./#lisans">Lisans ve web <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu"><div class="wrap grid"><div class="menu-col span-5"><a href="microsoft-lisanslama/">Microsoft lisanslama<span>Doğru paket, doğru kurulum</span></a><a href="web-sitesi-tasarimi/">Web sitesi tasarımı<span>Hızlı, mobil uyumlu</span></a><a href="google-reklam-planlamasi/">Google reklam planlaması<span>Bütçe, hedefleme, rapor</span></a></div></div></div>
+      </div>
+      <div class="nav__item"><a class="nav__link" href="hakkimizda/">Hakkımızda</a></div>
+      <div class="nav__item"><a class="nav__link" href="./#sorular">Sorular</a></div>
     </nav>
     <div class="nav__actions">
-      <a class="btn btn--primary" href="mailto:info@acrbilgi.com?subject=G%C3%B6r%C3%BC%C5%9Fme%20talebi">Görüşme planlayın</a>
+      <a class="nav__link" href="en/" hreflang="en" lang="en" title="English">EN</a>
+      <a class="btn btn--primary" href="iletisim/#gorusme">Görüşme planlayın</a>
     </div>
     <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menü">
       <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -197,7 +207,7 @@
       <div class="hero__text span-5">
         <h1 id="hero-h">Logo ve Mikro için özel yazılım danışmanlığı</h1>
         <p class="hero__lead">Logo veya Mikro'da yapamadığınız işleri portal, rapor ve yönetim ekranlarına çeviriyoruz. Donanım, güvenlik ve Microsoft lisanslama da aynı ekipten.</p>
-        <div class="btn-row"><a class="btn btn--primary" href="mailto:info@acrbilgi.com?subject=G%C3%B6r%C3%BC%C5%9Fme%20talebi">Görüşme planlayın</a><a class="btn btn--secondary" href="#yazilim">Yazılım hizmetlerini inceleyin</a></div>
+        <div class="btn-row"><a class="btn btn--primary" href="iletisim/#gorusme">Görüşme planlayın</a><a class="btn btn--secondary" href="#yazilim">Yazılım hizmetlerini inceleyin</a></div>
         <p class="hero__proof">20 yılı aşkın saha deneyimi, Beykoz, İstanbul.</p>
       </div>
       <div class="hero__art span-6 start-7" role="img" aria-label="ACR Portal'da satış analizi: rapor listesi ve onay bekleyen talepler">
@@ -236,7 +246,7 @@
     <div class="wrap">
       <div class="grid">
         <div class="span-5"><h2 id="yazilim-h">Logo ve Mikro'da yapılamayan işleri portala taşıyoruz</h2></div>
-        <div class="span-6 start-7"><p class="t-lead">Ticari yazılımınız yerinde kalır. Eksik kalan raporu, onay akışını ya da yönetim ekranını ona bağlı bir portal olarak geliştiriyoruz.</p><p><a class="link" href="#neler">Neler geliştirdiğimizi görün</a></p></div>
+        <div class="span-6 start-7"><p class="t-lead">Ticari yazılımınız yerinde kalır. Eksik kalan raporu, onay akışını ya da yönetim ekranını ona bağlı bir portal olarak geliştiriyoruz.</p><p><a class="link" href="#neler">Neler geliştirdiğimizi görün</a></p><p><a class="link" href="ozel-yazilim-gelistirme/">Özel yazılım hizmetini inceleyin</a></p></div>
       </div>
       <div class="ui app fill" role="img" aria-label="ACR Portal: bekleyen işlerin listesi ve açık işin zamanında teslim grafiği" data-ui-pause-host>
         <div class="app__pane app__pane--list">
@@ -394,6 +404,8 @@
           <li><span class="rows__name">Ağ ve güvenlik<small>Firewall ve ağ çözümleriyle verinizi koruruz.</small></span></li>
           <li><span class="rows__name">Son kullanıcı desteği<small>Çalışanlarınıza yerinde ve uzaktan destek.</small></span></li>
         </ul>
+        <p><a class="link" href="kurumsal-donanim-sunucu/">Donanım ve sunucu hizmetini inceleyin</a></p>
+        <p><a class="link" href="firewall-ag-guvenligi/">Firewall ve ağ güvenliğini inceleyin</a></p>
       </div>
       <div class="span-6 start-7">
         <div class="panel"><div class="dg" data-dg-still data-diagram='{"layout":"hub","alt":"Firewall, sunucu, bilgisayarlar, yedekleme, yazıcı ve Wi-Fi şirket ağına bağlanır.","center":{"label":"Şirket ağı","icon":"ui:network"},"spokes":[{"label":"Firewall","icon":"ui:shield-check"},{"label":"Sunucu","icon":"ui:server"},{"label":"Bilgisayarlar","icon":"ui:laptop"},{"label":"Yedekleme","icon":"ui:hard-drive"},{"label":"Yazıcılar","icon":"ui:printer"},{"label":"Wi-Fi","icon":"ui:wifi"}]}'></div></div>
@@ -412,6 +424,9 @@
           <li><span class="rows__name">Web sitesi tasarımı<small>Hızlı ve mobil uyumlu; arama motorlarının ve yapay zeka aramalarının okuyacağı yapıda.</small></span></li>
           <li><span class="rows__name">Google reklam planlaması<small>Bütçe, hedefleme ve kampanya yapısını planlar, sonuçları raporlarız.</small></span></li>
         </ul>
+        <p><a class="link" href="microsoft-lisanslama/">Microsoft lisanslamayı inceleyin</a></p>
+        <p><a class="link" href="web-sitesi-tasarimi/">Web sitesi tasarımını inceleyin</a></p>
+        <p><a class="link" href="google-reklam-planlamasi/">Google reklam planlamasını inceleyin</a></p>
       </div>
       <div class="span-6 start-7">
         <div class="panel"><div class="stage"><div class="at-rise fit" style="--fit-max:420px;--ax:max(24px, 50% - 210px);--ay:48px;--ay-sm:16px" data-ui-loop>
@@ -523,18 +538,18 @@
         <h2 id="close-h">İhtiyacınızı birlikte netleştirelim</h2>
         <p>Yazılım, altyapı, lisans, web ve reklam: tek görüşmede konuşalım.</p>
       </div>
-      <a class="btn btn--primary btn--xl" href="mailto:info@acrbilgi.com?subject=G%C3%B6r%C3%BC%C5%9Fme%20talebi">Görüşme planlayın<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+      <a class="btn btn--primary btn--xl" href="iletisim/#gorusme">Görüşme planlayın<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
     </div>
     <div class="closing__links">
       <div class="grid">
         <div class="span-4 stack-4">
-          <a class="nav__logo" href="#top" aria-label="ACR Bilgi, ana sayfa"><img src="assets/logo-white.png" alt="ACR Bilgi" width="150" height="36" style="height:34px;width:auto"></a>
+          <a class="nav__logo" href="./" aria-label="ACR Bilgi, ana sayfa"><img src="assets/logo-white.png" alt="ACR Bilgi" width="150" height="36" style="height:34px;width:auto"></a>
           <p class="footer__lede">Logo ve Mikro kullanan şirketler için yazılım danışmanlığı ve kurumsal IT hizmetleri.</p>
         </div>
-        <div class="span-2 footer__col"><h3>Yazılım</h3><ul><li><a href="#yazilim">Portallar</a></li><li><a href="#neler">Neler yapıyoruz</a></li><li><a href="#surec">Süreç</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>Hizmetler</h3><ul><li><a href="#altyapi">Donanım ve güvenlik</a></li><li><a href="#lisans">Microsoft lisans</a></li><li><a href="#lisans">Web ve reklam</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>İletişim</h3><ul><li><a href="mailto:info@acrbilgi.com">E-posta</a></li><li><a href="tel:+905309694010">Telefon</a></li><li><a href="https://wa.me/905309694010">WhatsApp</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>Adres</h3><ul><li>Rüzgarlıbahçe, Beykoz</li><li><a href="https://www.openstreetmap.org/search?query=R%C3%BCzgarl%C4%B1bah%C3%A7e%20Beykoz%20%C4%B0stanbul">Yol tarifi alın</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Yazılım</h3><ul><li><a href="ozel-yazilim-gelistirme/">Özel yazılım</a></li><li><a href="logo-ozel-yazilim/">Logo için</a></li><li><a href="mikro-ozel-yazilim/">Mikro için</a></li><li><a href="yonetim-portali/">Yönetim portalı</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Hizmetler</h3><ul><li><a href="kurumsal-donanim-sunucu/">Donanım ve sunucu</a></li><li><a href="firewall-ag-guvenligi/">Firewall ve ağ güvenliği</a></li><li><a href="teknik-destek/">Son kullanıcı desteği</a></li><li><a href="microsoft-lisanslama/">Microsoft lisanslama</a></li><li><a href="web-sitesi-tasarimi/">Web sitesi tasarımı</a></li><li><a href="google-reklam-planlamasi/">Google reklam planlaması</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Şirket</h3><ul><li><a href="hakkimizda/">Hakkımızda</a></li><li><a href="iletisim/">İletişim</a></li><li><a href="kvkk/">KVKK</a></li><li><a href="gizlilik-ilkesi/">Gizlilik ilkesi</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>İletişim</h3><ul><li><a href="mailto:info@acrbilgi.com">E-posta</a></li><li><a href="tel:+905309694010">Telefon</a></li><li><a href="https://wa.me/905309694010">WhatsApp</a></li><li>Rüzgarlıbahçe, Beykoz</li></ul></div>
       </div>
       <div class="footer__legal">
         <span>&copy; 2026 ACR Bilgi</span>
@@ -545,7 +560,7 @@
 </footer>
 
 <nav class="actionbar" aria-label="Hızlı eylemler">
-  <a class="btn btn--primary" href="mailto:info@acrbilgi.com?subject=G%C3%B6r%C3%BC%C5%9Fme%20talebi">Görüşme planlayın</a>
+  <a class="btn btn--primary" href="iletisim/#gorusme">Görüşme planlayın</a>
 </nav>
 
 <script type="module" src="assets/system.js"></script>
