@@ -26,5 +26,13 @@ for (const e of fs.readdirSync('.', { withFileTypes: true })) {
 fs.mkdirSync(path.join(out, 'assets'), { recursive: true }); copy('assets', path.join(out, 'assets'), true);
 // tidy empty folders
 (function prune(d) { for (const e of fs.readdirSync(d, { withFileTypes: true })) if (e.isDirectory()) { prune(path.join(d, e.name)); if (!fs.readdirSync(path.join(d, e.name)).length) fs.rmdirSync(path.join(d, e.name)); } })(out);
+const legacy = process.env.LEGACY_DIR || '/tmp/claude-0/oldsite';
+if (fs.existsSync(legacy)) {
+  const put = (rel) => { const src = path.join(legacy, rel); if (!fs.existsSync(src)) return console.warn('legacy missing:', rel); fs.mkdirSync(path.dirname(path.join(out, rel)), { recursive: true }); fs.cpSync(src, path.join(out, rel), { recursive: true }); };
+  put('gonder.php'); put('php/PHPMailer'); put('php/config.php'); put('imza'); put('robots.txt');
+  for (const f of fs.readdirSync(legacy)) if (/^google[0-9a-f]+\.html$/.test(f) || f === 'BingSiteAuth.xml') put(f);
+  fs.writeFileSync(path.join(out, 'php/gonderim.log'), '');
+  fs.writeFileSync(path.join(out, 'php/.htaccess'), '<IfModule mod_authz_core.c>\n  Require all denied\n</IfModule>\n<IfModule !mod_authz_core.c>\n  Deny from all\n</IfModule>\n');
+} else console.warn('LEGACY_DIR not found: form backend and verification files are NOT in dist');
 let n = 0, bytes = 0; (function walk(d) { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p); else { n++; bytes += fs.statSync(p).size; } } })(out);
 console.log(`dist: ${n} files, ${(bytes / 1048576).toFixed(1)} MB`);

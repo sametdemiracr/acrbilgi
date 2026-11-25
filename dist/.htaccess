@@ -1,35 +1,71 @@
-# ACR Bilgi: Apache / LiteSpeed rules (Hostinger)
+# ACR Bilgi: Apache / LiteSpeed rules (Hostinger). Replaces the old WordPress-era file.
 Options -Indexes
 DirectoryIndex index.html index.php
 ErrorDocument 404 /404.html
+ErrorDocument 410 /404.html
+
+# form backend: the settings, the mail library and the log are never served over the web
+<FilesMatch "\.(log|md|py|bak|bk|old|sql)$">
+  Require all denied
+</FilesMatch>
+RedirectMatch 404 ^/php/
 
 <IfModule mod_rewrite.c>
-RewriteEngine On
-# https and the www host (the canonical address of every page)
-RewriteCond %{HTTPS} !=on [OR]
-RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteRule ^ https://www.acrbilgi.com%{REQUEST_URI} [L,R=301]
-# old addresses that have a new home
-RewriteRule ^hizmetler/?$ /ozel-yazilim-gelistirme/ [R=301,L]
-RewriteRule ^sunucu-ve-lisans/?$ /kurumsal-donanim-sunucu/ [R=301,L]
-RewriteRule ^teklif-al/?$ /iletisim/ [R=301,L]
+  RewriteEngine On
+  RewriteBase /
+
+  # one host: www. The https redirect is done by Hostinger (hPanel > SSL > Force HTTPS); keep it on there.
+  RewriteCond %{HTTP_HOST} ^acrbilgi\.com$ [NC]
+  RewriteRule ^(.*)$ https://www.acrbilgi.com/$1 [R=301,L]
+
+  # /page.html -> /page/ (old links). The Google verification file, the 404 page and the signature folder stay as files.
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !^/(404|google[0-9a-f]+)\.html$
+  RewriteCond %{REQUEST_URI} !^/imza/
+  RewriteRule ^(.+)\.html$ $1/ [R=301,L]
+
+  # --- pages of the previous site, sent to the closest page of this one ---
+  RewriteRule ^hizmetler/?$                       /                           [R=301,L]
+  RewriteRule ^sunucu-ve-lisans/?$                /kurumsal-donanim-sunucu/   [R=301,L]
+  RewriteRule ^teklif-al/?$                       /iletisim/                  [R=301,L]
+  RewriteRule ^mikro-yazilim-cozumleri/?$         /mikro-ozel-yazilim/        [R=301,L]
+  RewriteRule ^mikro-urun-karsilastirma/?$        /mikro-ozel-yazilim/        [R=301,L]
+  RewriteRule ^mikro-fiyatlari/?$                 /mikro-ozel-yazilim/        [R=301,L]
+  RewriteRule ^mikro-(run|jump|fly|musavir)/?$    /mikro-ozel-yazilim/        [R=301,L]
+  RewriteRule ^mikro-kurulum-egitim/?$            /mikro-ozel-yazilim/        [R=301,L]
+  RewriteRule ^mikro-danismanlik/?$               /ozel-yazilim-gelistirme/   [R=301,L]
+  RewriteRule ^mikro-destek/?$                    /teknik-destek/             [R=301,L]
+  # removed on purpose: answered with "410 Gone" and the 404 page
+  RewriteRule ^sozluk/?$                          -                           [G,L]
+
+  # --- addresses of the older WordPress site ---
+  RewriteRule ^hizmetlerimiz/?$                   /                           [R=301,L]
+  RewriteRule ^urunlerimiz/?$                     /mikro-ozel-yazilim/        [R=301,L]
+  RewriteRule ^mikro-erp-cozumleri/?$             /mikro-ozel-yazilim/        [R=301,L]
+  RewriteRule ^mikro-erp-danismanlik-hizmetleri/?$ /ozel-yazilim-gelistirme/  [R=301,L]
+  RewriteRule ^blog/?$                            /                           [R=301,L]
+  RewriteRule ^category/.*$                       /                           [R=301,L]
+  RewriteRule ^tag/.*$                            /mikro-ozel-yazilim/        [R=301,L]
+  RewriteRule ^author/.*$                         /hakkimizda/                [R=301,L]
+  RewriteRule ^wp-content/.*$                     /                           [R=301,L]
+  RewriteRule ^(feed|comments|xmlrpc\.php)/?.*$   /                           [R=301,L]
 </IfModule>
 
 <IfModule mod_headers.c>
-Header always set X-Content-Type-Options "nosniff"
-Header always set Referrer-Policy "strict-origin-when-cross-origin"
-Header always set X-Frame-Options "SAMEORIGIN"
-Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-<FilesMatch "\.(css|js|svg|webp|png|jpg|jpeg|woff2)$">
-Header set Cache-Control "public, max-age=2592000"
-</FilesMatch>
-<FilesMatch "\.html$">
-Header set Cache-Control "public, max-age=300"
-</FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  <FilesMatch "\.(css|js|svg|webp|png|jpg|jpeg|ico|woff2)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=300"
+  </FilesMatch>
 </IfModule>
 
 <IfModule mod_deflate.c>
-AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript image/svg+xml application/json application/xml
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript image/svg+xml application/json application/xml
 </IfModule>
 
 AddType image/webp .webp

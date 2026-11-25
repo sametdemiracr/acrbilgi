@@ -1,4 +1,68 @@
 User-agent: *
 Allow: /
 
+# Yapay zeka arama motorlarina acik erisim.
+# Bu botlar engellenirse ChatGPT, Claude, Perplexity ve
+# Google AI Overviews yanitlarinda kaynak olarak gosterilemeyiz.
+
+# OpenAI — model eğitimi
+User-agent: GPTBot
+Allow: /
+
+# ChatGPT arama sonuçları
+User-agent: OAI-SearchBot
+Allow: /
+
+# ChatGPT canlı gezinme
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic Claude
+User-agent: ClaudeBot
+Allow: /
+
+# Claude canlı gezinme
+User-agent: Claude-User
+Allow: /
+
+# Claude arama
+User-agent: Claude-SearchBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Perplexity canlı gezinme
+User-agent: Perplexity-User
+Allow: /
+
+# Gemini ve AI Overviews
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Bing — ChatGPT aramasının dizini
+User-agent: Bingbot
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+
 Sitemap: https://www.acrbilgi.com/sitemap.xml

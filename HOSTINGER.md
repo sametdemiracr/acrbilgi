@@ -1,14 +1,18 @@
-# Hostinger'da yayına alma
+# Hostinger'da yayına alma (tek paket)
 
-Yayın paketi `acrbilgi-site.zip` (içeriği `dist/` klasörüdür; `node tools/build.mjs && node tools/package.mjs` ile yeniden üretilir).
+`acrbilgi-site.zip` yeni siteyi, eski sitenin çalışan parçalarını (form altyapısı `gonder.php` + PHPMailer ayarları, Google ve Bing doğrulama dosyaları, `imza/` klasörü, robots.txt) ve yeni `.htaccess` dosyasını birlikte içerir. Eski sitenin sayfaları yeni sayfalara yönlendirilir; kaldırılan sayfa 404 sayfasını gösterir.
 
-1. **Yedek alın.** hPanel > Dosyalar > Dosya Yöneticisi: `public_html` içindeki mevcut siteyi bilgisayarınıza indirin (eski Mikro sayfalarını korumak isterseniz gerekir).
-2. **Önce deneme adresinde açın (önerilir).** hPanel > Alan adları > Alt alan adı: `yeni.acrbilgi.com` oluşturun, zip'i onun klasörüne yükleyip "Çıkar" deyin. Gezin, formu deneyin.
-3. **Canlıya alırken:** zip'i `public_html` içine yükleyip çıkarın. Aynı adlı dosyaların üzerine yazılır (index.html, assets, logo). Eski sitenin kullanılmayacak sayfalarını silmeyin, önce 301 yönlendirmelerini planlayın (aşağıya bakın).
-4. **SSL:** hPanel > SSL bölümünde alan adı için SSL'in etkin olduğundan emin olun. `.htaccess` her adresi `https://www.acrbilgi.com` adresine yönlendirir.
-5. **PHP:** form `form.php` dosyasıyla çalışır (PHP 8). hPanel > Gelişmiş > PHP yapılandırması'nda PHP'nin açık olduğunu kontrol edin.
-6. **E-posta (Exchange Online):** alan adının DNS kayıtlarını (MX, SPF, autodiscover, DKIM) DEĞİŞTİRMEYİN. Siteyi yayınlamak için yalnızca A kaydı (veya Hostinger'ın verdiği name server'lar) kullanılır. Formdan gelen mailin Microsoft kutusuna düşmesi için SPF'e Hostinger'ı ekleyin: mevcut `v=spf1 include:spf.protection.outlook.com ... -all` kaydına `include:_spf.mail.hostinger.com` ekleyin (tam adı hPanel > E-posta > DNS yönergesinden doğrulayın). Ardından formu deneyin; mail gelmezse Önemsiz/Karantina klasörüne bakın.
-7. **Sonra:** Google Search Console'a `https://www.acrbilgi.com/sitemap.xml` adresini ekleyin; eski sayfaların yönlendirmelerini kontrol edin.
+## Adımlar
+1. hPanel > Dosya Yöneticisi: `public_html` içindekileri bilgisayarınıza yedek olarak indirin.
+2. `public_html` içindeki her şeyi silin (gizli dosyalar dahil: "gizli dosyaları göster" açık olsun).
+3. Zip'i `public_html` içine yükleyip **Çıkar** deyin. Dosyalar (`index.html`, `.htaccess`, `gonder.php`, `assets`...) doğrudan `public_html` içinde olmalı.
+4. hPanel > SSL: "Force HTTPS" açık olsun.
+5. Deneme: ana sayfa, `/en/`, `/iletisim/` (formu doldurun), `/mikro-run/` (yönlendirmeli), `/sozluk/` (404 sayfası), `/google66aa39292a617e62.html`.
+6. Google Search Console'da sitemap'i yenileyin: `https://www.acrbilgi.com/sitemap.xml`.
 
-## Eski adresler
-`.htaccess` içinde: `/hizmetler/` → özel yazılım, `/sunucu-ve-lisans/` → donanım ve sunucu, `/teklif-al/` → iletişim. Eski Mikro ürün sayfaları (`/mikro-run/`, `/mikro-fiyatlari/`, `/sozluk/` vb.) yeni sitede yok. Siteden silerseniz 404 verir; ya dosyalarını bırakın ya da yeni bir Mikro sayfası hazırlayıp yönlendirin.
+## Yönlendirmeler
+Ayrıntısı `.htaccess` içinde: mikro-run/jump/fly/musavir, mikro-fiyatlari, mikro-urun-karsilastirma, mikro-yazilim-cozumleri, mikro-kurulum-egitim: /mikro-ozel-yazilim/; mikro-danismanlik: /ozel-yazilim-gelistirme/; mikro-destek: /teknik-destek/; hizmetler: ana sayfa; sunucu-ve-lisans: /kurumsal-donanim-sunucu/; teklif-al: /iletisim/; sozluk: kaldırıldı (404 sayfası). Eski WordPress adresleri de aynı şekilde eşlenir.
+
+## Güvenlik notları
+- `php/config.php` Gmail uygulama şifresi içerir; bu dosya paylaşıldığı için şifreyi Google Hesabı'ndan iptal edip yenisini `php/config.php` içine yazın.
+- Pakete BİLEREK konmayanlar (eski sitede herkese açık duruyordu): `wp-config.php.old`, `readme.html`, `license.txt`, `README.md`, `*.py`, `.private`, `htaccess`/`.htaccess.bk`, `php/gonderim.log` (IP kayıtları; boş bir tanesi konur).

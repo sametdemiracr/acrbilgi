@@ -7,6 +7,9 @@ import { FRAG } from './fragments.mjs';
 import { HOME_EN } from './home-en.mjs';
 
 const ORIGIN = 'https://www.acrbilgi.com';
+const AN = JSON.parse(fs.readFileSync(new URL('./analytics.json', import.meta.url), 'utf8'));
+const analyticsHtml = (trackSrc) => `<meta name="google-site-verification" content="${AN.verification}">\n<script async src="https://www.googletagmanager.com/gtag/js?id=${AN.ga}"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n  gtag('config', '${AN.ga}');\n  gtag('config', '${AN.ads}');\n  window.ACR_DONUSUM = ${JSON.stringify(AN.conversions)};\n  window.acrOlay = function (ad, ek) { try { gtag('event', ad, ek || {}); var s = (window.ACR_DONUSUM || {})[ad]; if (s) { gtag('event', 'conversion', { send_to: s }); } } catch (e) {} };\n</script>\n<script src="${trackSrc}" defer></script>`;
+const iconsHtml = (up) => `<link rel="icon" href="${up}favicon.ico" sizes="32x32">\n<link rel="icon" href="${up}assets/favicon.png" type="image/png" sizes="192x192">\n<link rel="apple-touch-icon" href="${up}assets/favicon.png">`;
 const PHONE = '+905309694010';
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const J = (o) => JSON.stringify(o, null, 2);
@@ -157,7 +160,7 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}<meta property="og:t
 <meta property="og:url" content="${c.url(l, c.id)}">
 <meta property="og:image" content="${ORIGIN}/share.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="${c.up}favicon.svg" type="image/svg+xml">
+${iconsHtml(c.up)}
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="${c.url(l, c.id)}">
 ${alt('tr')}
@@ -176,6 +179,7 @@ ${ROOT_STYLE}
 <link rel="stylesheet" href="${c.asset('ui/base.css')}">
 ${frags.map((f) => `<link rel="stylesheet" href="${c.asset('ui/' + f + '/fragment.css')}">`).join('\n')}
 <link rel="stylesheet" href="${c.asset('site.css')}">
+${analyticsHtml(c.asset('track.js'))}
 <script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 <script src="${c.asset('backgrounds/backgrounds.js')}"></script>
 <style>
@@ -360,21 +364,22 @@ ${navHtml(c)}
     <div class="wrap grid grid--top">
       <div class="span-6">
         <div class="section-head"><h2 id="gorusme-h">${esc(k.formH)}</h2><p>${esc(k.formP)}</p></div>
-        <form class="form" action="mailto:info@acrbilgi.com" method="post" enctype="text/plain" data-endpoint="/form.php" data-sent="${esc(k.sent)}" novalidate>
+        <form class="form" action="mailto:info@acrbilgi.com" method="post" enctype="text/plain" data-endpoint="/gonder.php" data-sent="${esc(k.sent)}" novalidate>
+          <input type="hidden" name="form_tipi" value="İletişim formu">
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="field"><label for="f-name">${esc(lb.name)}</label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+            <input id="f-name" name="ad" type="text" autocomplete="name" required aria-describedby="f-name-err">
             <p class="field__error" id="f-name-err" hidden>${esc(er.name)}</p></div>
           <div class="field"><label for="f-company">${esc(lb.company)}</label>
-            <input id="f-company" name="company" type="text" autocomplete="organization" required aria-describedby="f-company-err">
+            <input id="f-company" name="firma" type="text" autocomplete="organization" required aria-describedby="f-company-err">
             <p class="field__error" id="f-company-err" hidden>${esc(er.company)}</p></div>
           <div class="field"><label for="f-email">${esc(lb.email)}</label>
-            <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-err">
+            <input id="f-email" name="eposta" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-err">
             <p class="field__error" id="f-email-err" hidden>${esc(er.email)}</p></div>
           <div class="field"><label for="f-phone">${esc(lb.phone)}</label>
-            <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
+            <input id="f-phone" name="telefon" type="tel" autocomplete="tel" inputmode="tel"></div>
           <div class="field"><label for="f-message">${esc(lb.message)}</label>
-            <textarea id="f-message" name="message" rows="4" autocomplete="off" required aria-describedby="f-message-err"></textarea>
+            <textarea id="f-message" name="mesaj" rows="4" autocomplete="off" required aria-describedby="f-message-err"></textarea>
             <p class="field__error" id="f-message-err" hidden>${esc(er.message)}</p></div>
           <div class="btn-row"><button class="btn btn--primary" type="submit">${esc(t.cta)}</button></div>
           <p class="form__status" role="status" data-form-status></p>
@@ -558,6 +563,8 @@ function homePages() {
   const rowIcons = { 'Donanım ve sunucu': 'server', 'Ağ ve güvenlik': 'shield-check', 'Son kullanıcı desteği': 'headset', 'Microsoft lisanslama': 'badge-check', 'Web sitesi tasarımı': 'layout-template', 'Google reklam planlaması': 'megaphone' };
   for (const [name, icon] of Object.entries(rowIcons)) tr = tr.replace(`<li><span class="rows__name">${name}<small>`, `<li>${chip(icon, true)}<span class="rows__name">${name}<small>`);
   tr = tr.replace(/(id="altyapi"[\s\S]*?<ul class=")rows(")/, '$1rows rows--ico$2').replace(/(id="lisans"[\s\S]*?<ul class=")rows(")/, '$1rows rows--ico$2');
+  tr = tr.replace(/<link rel="icon" href="favicon\.svg" type="image\/svg\+xml">/, iconsHtml(''));
+  if (!tr.includes('googletagmanager')) tr = tr.replace('</head>', analyticsHtml('assets/track.js') + '\n</head>');
   tr = swapChrome(tr, cTr);
   // hreflang and a link to every section's page
   if (!tr.includes('hreflang="en"')) tr = tr.replace('<link rel="canonical" href="https://www.acrbilgi.com/">', `<link rel="canonical" href="${ORIGIN}/">\n<link rel="alternate" hreflang="tr" href="${ORIGIN}/">\n<link rel="alternate" hreflang="en" href="${ORIGIN}/en/">\n<link rel="alternate" hreflang="x-default" href="${ORIGIN}/">`);
@@ -571,7 +578,7 @@ function homePages() {
     en = en.replace(node, (m, x, y) => x + b + y).replace(attr, '="' + b + '"');
   }
   en = en.replace('<html lang="tr"', '<html lang="en"');
-  en = en.replace(/(href|src|srcset)="(assets\/|favicon\.svg)/g, '$1="../$2').replace(/url\(assets\//g, 'url(../assets/');
+  en = en.replace(/(href|src|srcset)="(assets\/|favicon\.ico|favicon\.svg)/g, '$1="../$2').replace(/url\(assets\//g, 'url(../assets/');
   en = en.replace(/(href)="(iletisim|contact)\/#gorusme"/g, 'href="contact/#gorusme"');
   en = en.replace(/href="(ozel-yazilim-gelistirme|kurumsal-donanim-sunucu|microsoft-lisanslama|yonetim-portali)\/"/g, (m, s) => `href="${PAGES.find((p) => p.slug.tr === s).slug.en}/"`);
   en = en.replace(`<link rel="canonical" href="${ORIGIN}/">`, `<link rel="canonical" href="${ORIGIN}/en/">`).replace(`<meta property="og:url" content="${ORIGIN}/">`, `<meta property="og:url" content="${ORIGIN}/en/">`).replace('content="tr_TR"', 'content="en_US"');
