@@ -37,3 +37,60 @@
 .d-card h5 { margin: 0 0 4px; font: 600 14px/1.3 var(--font-text); }
 .d-card p { margin: 0; color: #5d6268; font-size: 13px; }
 .d-card__row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+
+/* ---- ACR Bilgi touches: gradient tiles with soft bubbles, icon chips (one look for every page) ---- */
+.tile { position: relative; overflow: hidden; isolation: isolate; display: grid; align-content: start; gap: var(--s-3); height: 100%;
+  padding: var(--s-6); border: 1px solid color-mix(in oklab, var(--ink) 9%, transparent); border-radius: var(--r-lg);
+  background: linear-gradient(160deg, #ffffff 0%, #f4f8fd 58%, #e7f0fa 100%); color: var(--ink);
+  transition: transform .2s ease, box-shadow .2s ease; }
+.tile::before, .tile::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; pointer-events: none; }
+.tile::before { width: 170px; height: 170px; right: -52px; top: -56px;
+  background: radial-gradient(circle at 32% 30%, rgb(10 107 192 / .15), rgb(10 107 192 / .05) 58%, transparent 70%); box-shadow: inset 0 0 0 1px rgb(10 107 192 / .08); }
+.tile::after { width: 84px; height: 84px; right: 46px; bottom: -38px; background: radial-gradient(circle at 34% 30%, rgb(10 107 192 / .10), transparent 70%); box-shadow: inset 0 0 0 1px rgb(10 107 192 / .07); }
+a.tile:hover, .tile:hover { transform: translateY(-2px); box-shadow: 0 16px 34px -22px rgb(11 18 32 / .35); }
+.tile h3 { margin: 0; }
+.tile p { margin: 0; }
+.tile__ico { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; color: #fff; flex: none;
+  background: linear-gradient(145deg, #0a6bc0, #0683e3); box-shadow: 0 8px 18px -8px rgb(6 131 227 / .6), inset 0 1px 0 rgb(255 255 255 / .25); }
+.tile__ico svg { width: 24px; height: 24px; }
+.tile__ico--sm { width: 40px; height: 40px; border-radius: 12px; }
+.tile__ico--sm svg { width: 20px; height: 20px; }
+.tile__head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
+.tile__num { font: 500 14px/1 var(--font-mono); color: var(--accent); padding: 6px 10px; border-radius: 99px; background: rgb(10 107 192 / .08); }
+.tile--link { grid-template-columns: auto 1fr auto; align-items: center; padding: var(--s-4) var(--s-5); text-decoration: none; }
+.tile--link .tile__arrow { color: var(--accent); }
+.tile--dark { background: linear-gradient(160deg, #141c2e, #0b1220); border-color: rgb(255 255 255 / .1); color: #fff; }
+.tile--dark::before { background: radial-gradient(circle at 32% 30%, rgb(61 160 239 / .25), transparent 70%); }
+.tile-grid { display: grid; gap: var(--s-4); grid-template-columns: 1fr; }
+@media (min-width: 640px) { .tile-grid--2, .tile-grid--4 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .tile-grid--3 { grid-template-columns: repeat(3, 1fr); } .tile-grid--4 { grid-template-columns: repeat(4, 1fr); } }
+.sec-bubbles { position: relative; isolation: isolate; }
+.sec-bubbles::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(circle at 8% 18%, rgb(10 107 192 / .05) 0 120px, transparent 121px),
+    radial-gradient(circle at 94% 62%, rgb(10 107 192 / .045) 0 170px, transparent 171px),
+    radial-gradient(circle at 70% 8%, rgb(10 107 192 / .05) 0 60px, transparent 61px); }
+/* icon beside each row's name */
+.rows--ico > li { grid-template-columns: minmax(0, 1fr); gap: var(--s-3); align-items: start; justify-items: start; }
+/* the dark footer gets the same bubbles */
+.footer--dark { position: relative; overflow: hidden; isolation: isolate; }
+.footer--dark::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(circle at 92% 12%, rgb(10 107 192 / .18) 0 140px, transparent 141px),
+    radial-gradient(circle at 80% 30%, rgb(61 160 239 / .10) 0 70px, transparent 71px),
+    radial-gradient(circle at 6% 85%, rgb(10 107 192 / .10) 0 110px, transparent 111px); }
+
+/* ---- navigation panels: icon tiles and a dark call-to-action tile ---- */
+.menu-tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); }
+.mtile { display: grid; grid-template-columns: auto 1fr; gap: var(--s-4); align-items: center; padding: var(--s-3) var(--s-4); border-radius: var(--r-md);
+  border: 1px solid transparent; text-decoration: none; color: var(--ink); transition: background .2s ease, border-color .2s ease, transform .2s ease; }
+.mtile:hover, .mtile:focus-visible { background: linear-gradient(160deg, #fff, #eaf2fb); border-color: color-mix(in oklab, var(--ink) 9%, transparent); transform: translateY(-1px); }
+.mtile b { display: block; font-weight: 500; font-size: var(--t-body); }
+.mtile small { display: block; margin-top: 2px; font-size: var(--t-small); color: var(--muted); line-height: 1.4; }
+.menu-cta { align-content: space-between; text-decoration: none; min-height: 168px; }
+.menu-cta b { font: 500 var(--t-lead)/1.25 var(--font-display); letter-spacing: -0.01em; }
+.menu-cta > span:not(.menu-cta__go) { color: rgb(255 255 255 / .75); font-size: var(--t-small); }
+.menu-cta__go { display: inline-flex; align-items: center; gap: var(--s-2); font-weight: 500; font-size: var(--t-small); color: #fff; }
+.nav__menu .tile::before, .nav__menu .tile::after { z-index: 0; }
+.nav__menu .tile > * { position: relative; z-index: 1; }
+@media (max-width: 1023px) { .menu-tiles { grid-template-columns: 1fr; } .menu-cta { display: none; } }

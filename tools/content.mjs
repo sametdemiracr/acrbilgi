@@ -16,6 +16,7 @@ export const UI = {
     trademark: 'Ürün adları ve logolar ilgili sahiplerinin ticari markalarıdır.',
     kvkk: 'KVKK', privacy: 'Gizlilik ilkesi', other: 'Diğer hizmetler', what: 'Neler yapıyoruz', how: 'Nasıl çalışıyoruz', faq: 'Sık sorulan sorular',
     related: 'İlgili hizmetler', crumbHome: 'Ana sayfa', closeH: 'İhtiyacınızı birlikte netleştirelim', closeP: 'Yazılım, altyapı, lisans, web ve reklam: tek görüşmede konuşalım.',
+    menuLead: { software: ['Özel yazılım', 'Logo ve Mikro\'nun yapmadığı işi birlikte yazalım.'], infra: ['Altyapı ve destek', 'Donanım, güvenlik ve kullanıcı desteği tek ekipten.'], licence: ['Lisans, web ve reklam', 'Lisanstan Google reklamına, dijital işleriniz.'] },
     switchLang: 'EN', switchTitle: 'English', seeServices: 'Diğer hizmetleri görün', updated: 'Son güncelleme', byline: 'Beykoz, İstanbul',
   },
   en: {
@@ -27,6 +28,7 @@ export const UI = {
     trademark: 'Product names and logos are trademarks of their owners.',
     kvkk: 'KVKK notice', privacy: 'Privacy policy', other: 'Other services', what: 'What we do', how: 'How we work', faq: 'Questions',
     related: 'Related services', crumbHome: 'Home', closeH: "Let's pin down what you need", closeP: 'Software, infrastructure, licensing, web and ads: one conversation.',
+    menuLead: { software: ['Custom software', 'Let us build what Logo and Mikro do not do.'], infra: ['Infrastructure and support', 'Hardware, security and user support from one team.'], licence: ['Licensing, web and ads', 'From licences to Google Ads, your digital work.'] },
     switchLang: 'TR', switchTitle: 'Türkçe', seeServices: 'See our other services', updated: 'Last updated', byline: 'Beykoz, Istanbul',
   },
 };

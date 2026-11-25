@@ -12,6 +12,26 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 const J = (o) => JSON.stringify(o, null, 2);
 const other = (l) => (l === 'tr' ? 'en' : 'tr');
 
+
+// ---------------------------------------------------------------- icons (lucide glyphs fetched into assets/icons/ui)
+const _ic = {};
+function ico(name) {
+  if (!_ic[name]) {
+    const f = `assets/icons/ui/ui-${name}.svg`;
+    if (!fs.existsSync(f)) throw new Error('icon missing ' + name);
+    _ic[name] = fs.readFileSync(f, 'utf8').replace(/<svg[^>]*>/, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">').replace(/<g[^>]*>/, '<g>');
+  }
+  return _ic[name];
+}
+const ICONS = {
+  'ozel-yazilim': ['workflow', 'file-chart-column', 'plug', 'layout-dashboard'], logo: ['chart-column', 'workflow', 'plug', 'mail'], mikro: ['plug', 'layout-dashboard', 'file-chart-column', 'wrench'],
+  portal: ['layout-dashboard', 'boxes', 'workflow', 'key-round'], donanim: ['server', 'laptop', 'hard-drive', 'refresh-cw'], firewall: ['shield-check', 'network', 'globe', 'hard-drive'],
+  lisans: ['badge-check', 'shopping-cart', 'wrench', 'refresh-cw'], web: ['layout-template', 'smartphone', 'search', 'rocket'], ads: ['target', 'megaphone', 'chart-column', 'file-chart-column'],
+  destek: ['wrench', 'headset', 'map-pin', 'users'],
+};
+const STEP_ICONS = ['clipboard-list', 'hammer', 'rocket'];
+const chip = (n, sm = false) => `<span class="tile__ico${sm ? ' tile__ico--sm' : ''}">${ico(n)}</span>`;
+
 // ---------------------------------------------------------------- routes
 const byId = Object.fromEntries(PAGES.map((p) => [p.id, p]));
 function rel(lang, id) {            // path of a page from the site root, per language
@@ -34,10 +54,11 @@ const MENUS = { software: ['ozel-yazilim', 'logo', 'mikro', 'portal'], infra: ['
 function navHtml(c) {
   const t = UI[c.lang]; const l = c.lang;
   const item = (group, label, anchor) => {
-    const links = MENUS[group].map((id) => { const p = byId[id]; return `<a href="${c.href(l, id)}">${esc(p.menu[l][0])}<span>${esc(p.menu[l][1])}</span></a>`; }).join('');
+    const tiles = MENUS[group].map((id) => { const p = byId[id]; return `<a class="mtile" href="${c.href(l, id)}">${chip(ICONS[id][0], true)}<span><b>${esc(p.menu[l][0])}</b><small>${esc(p.menu[l][1])}</small></span></a>`; }).join('');
+    const [lt, lp] = t.menuLead[group];
     return `      <div class="nav__item">
         <a class="nav__link" href="${c.href(l, 'home', anchor)}">${esc(label)} <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <div class="nav__menu"><div class="wrap grid"><div class="menu-col span-5">${links}</div></div></div>
+        <div class="nav__menu"><div class="wrap grid"><div class="span-8 menu-tiles">${tiles}</div><a class="span-4 tile tile--dark menu-cta" href="${c.href(l, 'contact', '#gorusme')}"><b>${esc(lt)}</b><span>${esc(lp)}</span><span class="menu-cta__go">${esc(t.cta)} <svg width="16" height="16" viewBox="0 0 12 12" aria-hidden="true"><path d="M1 6h8M4.5 2.5 8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div></div>
       </div>`;
   };
   return `<header class="nav nav--centre">
@@ -232,14 +253,14 @@ function servicePage(lang, p) {
   const what = p.what[lang].map(([n, d]) => `<li><span class="rows__name">${esc(n)}<small>${esc(d)}</small></span></li>`).join('\n          ');
   const steps = p.steps[lang].map(([n, d]) => `<li><span class="rows__name">${esc(n)}<small>${esc(d)}</small></span></li>`).join('\n          ');
   const faq = p.faq[lang].map(([q, a]) => `<div class="faq__item"><h3>${esc(q)}</h3><p>${esc(a)}</p></div>`).join('\n          ');
-  const related = p.related.map((id) => `<a class="link" href="${c.href(lang, id)}">${esc(byId[id].menu[lang][0])}</a>`).join('');
+  const related = p.related.map((id) => `<a class="tile tile--link" href="${c.href(lang, id)}">${chip(ICONS[id][0], true)}<span><b>${esc(byId[id].menu[lang][0])}</b><br><span class="muted t-small">${esc(byId[id].menu[lang][1])}</span></span><svg class="tile__arrow" width="18" height="18" viewBox="0 0 12 12" aria-hidden="true"><path d="M1 6h8M4.5 2.5 8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`).join('');
   const frag = FRAG[p.visual](lang, c);
   const ld = [
     { '@type': 'Service', '@id': c.url(lang, p.id) + '#service', name: p.title[lang], description: p.desc[lang], provider: orgRef, areaServed: [{ '@type': 'City', name: lang === 'tr' ? 'İstanbul' : 'Istanbul' }, { '@type': 'Country', name: lang === 'tr' ? 'Türkiye' : 'Turkey' }], inLanguage: lang === 'tr' ? 'tr-TR' : 'en-US', url: c.url(lang, p.id) },
     crumbLd(c, label), faqLd(p.faq[lang]),
   ];
-  const what4 = p.what[lang].map(([n, d]) => `<div class="span-3"><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(d)}</p></div>`).join('\n        ');
-  const steps3 = p.steps[lang].map(([n, d], i) => `<div class="span-4"><span class="step-num">${i + 1}</span><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(d)}</p></div>`).join('\n        ');
+  const what4 = p.what[lang].map(([n, d], i) => `<div class="span-3"><article class="tile">${chip(ICONS[p.id][i])}<h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(d)}</p></article></div>`).join('\n        ');
+  const steps3 = p.steps[lang].map(([n, d], i) => `<div class="span-4"><article class="tile"><div class="tile__head">${chip(STEP_ICONS[i])}<span class="tile__num">0${i + 1}</span></div><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(d)}</p></article></div>`).join('\n        ');
   const proof = p.facts[lang].slice(0, 3).map(([a, b]) => `${a}: ${b}`).join(' · ');
   const html = `${head(c, { title: `${p.title[lang]} | ACR Bilgi`, desc: p.desc[lang], ld, frags: frag.css, extraCss: '.hero__art > .ly-piece--main.frag { left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(var(--w), calc(100% - 48px)); } .steps3 { margin-top: var(--s-9, 96px); } @media (max-width: 639px) { .hero__art > .ly-piece--main.frag { top: var(--s-5); transform: translateX(-50%); } }' })}
 <body>
@@ -263,7 +284,7 @@ ${frag.html}
     </div></div>
   </section>
 
-  <section class="section" id="neler" aria-labelledby="neler-h">
+  <section class="section sec-bubbles" id="neler" aria-labelledby="neler-h">
     <div class="wrap">
       <div class="section-head"><h2 id="neler-h">${esc(t.what)}</h2></div>
       <div class="grid">
@@ -340,12 +361,12 @@ ${statementHero(c, { h1: k.h1, lead: k.lead, crumb: lang === 'tr' ? 'İletişim'
         </form>
       </div>
       <div class="span-6 start-7">
-        <ul class="rows">
-          <li><span class="rows__name">${esc(t.phone)}<small><a class="link" href="tel:${PHONE}">+90 530 969 40 10</a></small></span></li>
-          <li><span class="rows__name">${esc(t.whatsapp)}<small><a class="link" href="https://wa.me/905309694010">${esc(k.wa)}</a></small></span></li>
-          <li><span class="rows__name">${esc(t.email)}<small><a class="link" href="mailto:info@acrbilgi.com">info@acrbilgi.com</a></small></span></li>
-          <li><span class="rows__name">${esc(t.address)}<small>Rüzgarlıbahçe Mah. Cumhuriyet Cd. No: 10/32, 34805 Beykoz / ${lang === 'tr' ? 'İstanbul' : 'Istanbul'}<br><a class="link" href="https://www.openstreetmap.org/search?query=${encodeURIComponent(k.mapQuery)}">${esc(k.addrNote)}</a></small></span></li>
-        </ul>
+        <div class="tile-grid tile-grid--2">
+          <article class="tile">${chip('phone')}<h3 class="t-lead">${esc(t.phone)}</h3><p><a class="link" href="tel:${PHONE}">+90 530 969 40 10</a></p></article>
+          <article class="tile">${chip('message-circle')}<h3 class="t-lead">${esc(t.whatsapp)}</h3><p><a class="link" href="https://wa.me/905309694010">${esc(k.wa)}</a></p></article>
+          <article class="tile">${chip('mail')}<h3 class="t-lead">${esc(t.email)}</h3><p><a class="link" href="mailto:info@acrbilgi.com">info@acrbilgi.com</a></p></article>
+          <article class="tile">${chip('map-pin')}<h3 class="t-lead">${esc(t.address)}</h3><p class="muted">Rüzgarlıbahçe Mah. Cumhuriyet Cd. No: 10/32, 34805 Beykoz / ${lang === 'tr' ? 'İstanbul' : 'Istanbul'}</p><p><a class="link" href="https://www.openstreetmap.org/search?query=${encodeURIComponent(k.mapQuery)}">${esc(k.addrNote)}</a></p></article>
+        </div>
         <h3 class="t-lead" style="margin-top:var(--s-7)">${esc(k.hoursH)}</h3>
         <dl class="hours" data-tz="Europe/Istanbul"><dt data-days="mon-fri">${esc(k.hours[0][0])}</dt><dd>${esc(k.hours[0][1])}</dd><dt data-days="sat,sun">${esc(k.hours[1][0])}</dt><dd>${esc(k.hours[1][1])}</dd></dl>
         <p class="t-small muted">${esc(k.hoursNote)}</p>
@@ -379,14 +400,14 @@ ${statementHero(c, { h1: a.h1, lead: a.lead, factsArr: a.figs.map(([n, d]) => [d
   <section class="section" aria-labelledby="what-h">
     <div class="wrap grid grid--top">
       <div class="span-6"><div class="section-head"><h2 id="what-h">${esc(a.whatH)}</h2><p>${esc(a.what)}</p></div></div>
-      <div class="span-6 start-7"><h3 class="t-lead">${esc(a.ruleH)}</h3><ol class="rows">${a.rules.map(([n, d]) => `<li><span class="rows__name">${esc(n)}<small>${esc(d)}</small></span></li>`).join('')}</ol></div>
+      <div class="span-6 start-7"><div class="tile-grid">${a.rules.map(([n, d], i) => `<article class="tile" style="grid-template-columns:auto 1fr;column-gap:var(--s-4)">${chip(['file-text', 'circle-check', 'lock-open'][i], true)}<div><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(d)}</p></div></article>`).join('')}</div></div>
     </div>
   </section>
 
-  <section class="section ground-surface" aria-labelledby="team-h">
+  <section class="section ground-surface sec-bubbles" aria-labelledby="team-h">
     <div class="wrap">
       <div class="section-head"><h2 id="team-h">${esc(a.teamH)}</h2><p>${esc(a.teamP)}</p></div>
-      <div class="team">${a.team.map(([n, r]) => `<div><b>${esc(n)}</b><span class="muted">${esc(r)}</span></div>`).join('')}</div>
+      <div class="tile-grid tile-grid--4">${a.team.map(([n, r]) => `<article class="tile">${chip('user')}<div><h3 class="t-lead">${esc(n)}</h3><p class="muted">${esc(r)}</p></div></article>`).join('')}</div>
     </div>
   </section>
 
@@ -447,6 +468,10 @@ function homePages() {
   let tr = fs.readFileSync(trPath, 'utf8');
   const cTr = makeCtx('tr', 'home');
   tr = tr.replace(/mailto:info@acrbilgi\.com\?subject=G%C3%B6r%C3%BC%C5%9Fme%20talebi/g, 'iletisim/#gorusme');
+  // icons beside the rows of the infrastructure and licensing sections (idempotent)
+  const rowIcons = { 'Donanım ve sunucu': 'server', 'Ağ ve güvenlik': 'shield-check', 'Son kullanıcı desteği': 'headset', 'Microsoft lisanslama': 'badge-check', 'Web sitesi tasarımı': 'layout-template', 'Google reklam planlaması': 'megaphone' };
+  for (const [name, icon] of Object.entries(rowIcons)) tr = tr.replace(`<li><span class="rows__name">${name}<small>`, `<li>${chip(icon, true)}<span class="rows__name">${name}<small>`);
+  tr = tr.replace(/(id="altyapi"[\s\S]*?<ul class=")rows(")/, '$1rows rows--ico$2').replace(/(id="lisans"[\s\S]*?<ul class=")rows(")/, '$1rows rows--ico$2');
   tr = swapChrome(tr, cTr);
   // hreflang and a link to every section's page
   if (!tr.includes('hreflang="en"')) tr = tr.replace('<link rel="canonical" href="https://www.acrbilgi.com/">', `<link rel="canonical" href="${ORIGIN}/">\n<link rel="alternate" hreflang="tr" href="${ORIGIN}/">\n<link rel="alternate" hreflang="en" href="${ORIGIN}/en/">\n<link rel="alternate" hreflang="x-default" href="${ORIGIN}/">`);
